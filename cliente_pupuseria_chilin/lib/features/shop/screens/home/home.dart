@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:t_store/common/widgets/products/product_cards/product_card_vertical.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
+import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
@@ -14,11 +16,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TPrimaryHeaderContainer(
+            const TPrimaryHeaderContainer(
               child: Column(
                 children: [
                   //APPBAR
@@ -53,10 +55,20 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(TSizes.defaultSpace),
+              padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children: [
-                  TPromoSlider(banners: [TImages.promoBanner1, TImages.promoBanner2, TImages.promoBanner3],)
+                  const TPromoSlider(banners: [
+                    TImages.promoBanner1,
+                    TImages.promoBanner2,
+                    TImages.promoBanner3
+                  ]),
+
+                  TSectionHeading(title: 'Popular Products', onPressed: (){}),
+                  const SizedBox(height: TSizes.spaceBtwItems),
+
+                  //PRODUCTS
+                  GridLayout(itemCount: 4, itemBuilder: (_, index) => const ProductCardVertical()),
                 ],
               ),
             )
@@ -66,5 +78,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
