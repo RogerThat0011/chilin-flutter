@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/widgets/texts/section_heading.dart';
 import 'package:t_store/features/shop/screens/product_details/widgets/bottom_add_to_cart.dart';
@@ -6,8 +7,8 @@ import 'package:t_store/features/shop/screens/product_details/widgets/product_at
 import 'package:t_store/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
 import 'package:t_store/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:t_store/features/shop/screens/product_details/widgets/rating_share.dart';
+import 'package:t_store/features/shop/screens/product_reviews/widgets/product_reviews.dart';
 import 'package:t_store/utils/constants/sizes.dart';
-import 'package:t_store/utils/helpers/helper_functions.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDetail extends StatelessWidget {
@@ -15,8 +16,6 @@ class ProductDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunctions.isDarkMode(context);
-
     // ignore: prefer_const_constructors
     return Scaffold(
       bottomNavigationBar: const BottomAddToCart(),
@@ -57,8 +56,8 @@ class ProductDetail extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TSectionHeading(title: 'Reviews(199)',showActionButton: false),
-                      IconButton(onPressed: (){}, icon: const Icon(Iconsax.arrow_right_3, size: 18))
+                      const TSectionHeading(title: 'Reviews(199)',showActionButton: false),
+                      IconButton(onPressed: () => Get.to(() => const ProductReviewScreen()), icon: const Icon(Iconsax.arrow_right_3, size: 18))
                     ],
                   ),
                   const SizedBox(height: TSizes.spaceBtwSections),
