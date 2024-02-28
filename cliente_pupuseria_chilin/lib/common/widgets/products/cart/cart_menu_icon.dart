@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:t_store/features/shop/screens/cart/widgets/cart.dart';
+import 'package:t_store/utils/helpers/helper_functions.dart';
 
 import '../../../../utils/constants/colors.dart';
 
@@ -8,17 +11,22 @@ class TCartCounterIcon extends StatelessWidget {
     super.key,
     required this.onPressed,
     this.iconColor,
+    this.counterBgColor,
+    this.couterTextColor,
   });
 
   final VoidCallback onPressed;
-  final Color? iconColor;
+  final Color? iconColor, counterBgColor, couterTextColor;
 
   @override
   Widget build(BuildContext context) {
+
+    final dark = THelperFunctions.isDarkMode(context);
+
     return Stack(
       children: [
         IconButton(
-            onPressed: onPressed,
+            onPressed: () => Get.to(() => const CartScreen()),
             icon: Icon(
               Iconsax.shopping_bag,
               color: iconColor,
@@ -29,7 +37,7 @@ class TCartCounterIcon extends StatelessWidget {
             width: 18,
             height: 18,
             decoration: BoxDecoration(
-              color: TColors.black,
+              color: counterBgColor ?? (dark ? TColors.white : TColors.black),
               borderRadius: BorderRadius.circular(100),
             ),
             child: Center(
