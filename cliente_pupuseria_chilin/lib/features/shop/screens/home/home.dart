@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common/widgets/products/product_cards/product_card_vertical.dart';
+import 'package:t_store/features/shop/screens/all_products/all_products.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
@@ -65,7 +67,7 @@ class HomeScreen extends StatelessWidget {
                     TImages.promoBanner3
                   ]),
 
-                  TSectionHeading(title: 'Popular Products', onPressed: (){}),
+                  TSectionHeading(title: 'Popular Products', onPressed: () => Get.to(() => const AllProducts())),
                   const SizedBox(height: TSizes.spaceBtwItems),
 
                   //PRODUCTS

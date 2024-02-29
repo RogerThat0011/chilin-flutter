@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:t_store/common/styles/spacing_styles.dart';
-import 'package:t_store/features/screens/login/login.dart';
 
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/constants/text_strings.dart';
@@ -33,7 +31,7 @@ class SuccessScreen extends StatelessWidget {
               const SizedBox(height:TSizes.spaceBtwItems),
             
               //BUTTONS
-              SizedBox(width: double.infinity, child: ElevatedButton(onPressed: () => Get.to(() => const LoginScreen()), child: const Text(TTexts.tContinue))),
+              SizedBox(width: double.infinity, child: ElevatedButton(onPressed: onPressed, child: const Text(TTexts.tContinue))),
 
             ],
           ),
