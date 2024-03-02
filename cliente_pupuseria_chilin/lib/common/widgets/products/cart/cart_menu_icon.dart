@@ -37,7 +37,7 @@ class TCartCounterIcon extends StatelessWidget {
             width: 18,
             height: 18,
             decoration: BoxDecoration(
-              color: counterBgColor ?? (dark ? TColors.white : TColors.black),
+              color: counterBgColor ?? (dark ? TColors.black : TColors.white),
               borderRadius: BorderRadius.circular(100),
             ),
             child: Center(
