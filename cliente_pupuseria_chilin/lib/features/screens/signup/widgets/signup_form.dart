@@ -34,7 +34,7 @@ class TSignupForm extends StatelessWidget {
                 child: TextFormField(
                   expands: false,
                   decoration: const InputDecoration(
-                      labelText: TTexts.firstName,
+                      labelText: TTexts.lastName,
                       prefixIcon: Icon(Iconsax.user)),
                 ),
               ),
@@ -50,9 +50,7 @@ class TSignupForm extends StatelessWidget {
                 labelText: TTexts.username,
                 prefixIcon: Icon(Iconsax.user_edit)),
           ),
-
           const SizedBox(height: TSizes.spaceBtwInputFields),
-    
           //EMAIL
           TextFormField(
             expands: false,
