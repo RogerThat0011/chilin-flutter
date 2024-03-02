@@ -3,12 +3,12 @@
 class TTexts {
 
   // -- GLOBAL Texts
-  static const String and = "and";
+  static const String and = "y";
   static const String skip = "Skip";
-  static const String done = "Done";
-  static const String submit = "Submit";
-  static const String appName = "T-Store";
-  static const String tContinue = "Continue";
+  static const String done = "Listo";
+  static const String submit = "Enviar";
+  static const String appName = "Pupuseria Chilin";
+  static const String tContinue = "Continuar";
 
 
   // -- OnBoarding Texts
@@ -22,40 +22,40 @@ class TTexts {
 
 
   // -- Authentication Forms
-  static const String firstName = "First Name";
-  static const String lastName = "Last Name";
-  static const String email = "E-Mail";
-  static const String password = "Password";
-  static const String newPassword = "New Password";
-  static const String username = "Username";
-  static const String phoneNo = "Phone Number";
-  static const String rememberMe = "Remember Me";
-  static const String forgetPassword = "Forget Password?";
-  static const String signIn = "Sign In";
-  static const String createAccount = "Create Account";
-  static const String orSignInWith = "or sign in with";
-  static const String orSignUpWith = "or sign up with";
-  static const String iAgreeTo = "I agree to";
-  static const String privacyPolicy = "Privacy Policy";
-  static const String termsOfUse = "Terms of use";
+  static const String firstName = "Nombre";
+  static const String lastName = "Apellido";
+  static const String email = "Correo electronico";
+  static const String password = "Contraseña";
+  static const String newPassword = "Nueva contraseña";
+  static const String username = "Usuario";
+  static const String phoneNo = "Numero de telefono";
+  static const String rememberMe = "Recuerdame";
+  static const String forgetPassword = "Olvidaste tu contraseña?";
+  static const String signIn = "Iniciar sesión";
+  static const String createAccount = "Crea una cuenta";
+  static const String orSignInWith = "o inicia sesión con";
+  static const String orSignUpWith = "o crea tu cuenta con";
+  static const String iAgreeTo = "Acepto las";
+  static const String privacyPolicy = "Politicas de privacidad";
+  static const String termsOfUse = "T&C";
   static const String verificationCode = "verificationCode";
-  static const String resendEmail = "Resend Email";
+  static const String resendEmail = "Reenviar el correo electronico";
   static const String resendEmailIn = "Resend email in";
 
 
   // -- Authentication Headings
-  static const String loginTitle = "Welcome back,";
-  static const String loginSubTitle = "Discover Limitless Choices and Unmatched Convenience.";
-  static const String signupTitle = "Let’s create your account";
-  static const String forgetPasswordTitle = "Forget password";
-  static const String forgetPasswordSubTitle = "Don’t worry sometimes people can forget too, enter your email and we will send you a password reset link.";
-  static const String changeYourPasswordTitle = "Password Reset Email Sent";
-  static const String changeYourPasswordSubTitle = "Your Account Security is Our Priority! We've Sent You a Secure Link to Safely Change Your Password and Keep Your Account Protected.";
-  static const String confirmEmail = "Verify your email address!";
+  static const String loginTitle = "Bienvenido";
+  static const String loginSubTitle = "Puedes iniciar sesion con tus credenciales";
+  static const String signupTitle = "Vamos a crear tu cuenta";
+  static const String forgetPasswordTitle = "Olvidaste tu contraseña";
+  static const String forgetPasswordSubTitle = "No te preocupes, a veces las personas tambien olvidan su contraseña, por favor ingresa tu correo electronico para que podamos enviarte un link para resetear tu contraseña";
+  static const String changeYourPasswordTitle = "Se envio el correo para actualizar la contraseña";
+  static const String changeYourPasswordSubTitle = "La seguridad de tu cuenta es nuestra prioridad! Te hemos enviado un enlance para que cambies tu contraseña y mantener tu contraseña actualizada";
+  static const String confirmEmail = "Verifica tu correo electronico!";
   static const String confirmEmailSubTitle = "Congratulations! Your Account Awaits: Verify Your Email to Start Shopping and Experience a World of Unrivaled Deals and Personalized Offers.";
   static const String emailNotReceivedMessage = "Didn’t get the email? Check your junk/spam or resend it.";
-  static const String yourAccountCreatedTitle = "Your account successfully created!";
-  static const String yourAccountCreatedSubTitle = "Welcome to Your Ultimate Shopping Destination: Your Account is Created, Unleash the Joy of Seamless Online Shopping!";
+  static const String yourAccountCreatedTitle = "Tu cuenta fue creada con exito!";
+  static const String yourAccountCreatedSubTitle = "Bienvenido a Pupuseria Chilin!";
 
 
   // -- Product
