@@ -50,12 +50,7 @@ class TSignupForm extends StatelessWidget {
                 labelText: TTexts.username,
                 prefixIcon: Icon(Iconsax.user_edit)),
           ),
-
           const SizedBox(height: TSizes.spaceBtwInputFields),
-    
-=======
-          const SizedBox(height: TSizes.spaceBtwInputFields),
->>>>>>> Stashed changes
           //EMAIL
           TextFormField(
             expands: false,
