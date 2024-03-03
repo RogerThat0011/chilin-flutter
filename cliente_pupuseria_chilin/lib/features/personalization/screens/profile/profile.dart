@@ -14,7 +14,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: const TAppBar(
         showBackArrow: true,
-        title: Text('Profile'),
+        title: Text('Perfil'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -30,55 +30,56 @@ class ProfileScreen extends StatelessWidget {
                         image: TImages.user, width: 80, height: 80),
                     TextButton(
                         onPressed: () {},
-                        child: const Text('Change Profile Picture')),
+                        child: const Text('Cambiar Foto de Perfil')),
                   ],
                 ),
               ),
               const SizedBox(height: TSizes.spaceBtwItems / 2),
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),
-              
+
               //HEADER PROFILE INFO
               const TSectionHeading(
-                  title: 'Profile Information', showActionButton: false),
+                  title: 'Información Principal', showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
-              
+
               ProfileMenu(
-                  title: 'Name', value: 'Carlos Castellanos', onPressed: () {}),
-              ProfileMenu(
-                  title: 'Username',
+                  title: 'Nombre',
                   value: 'Carlos Castellanos',
                   onPressed: () {}),
-              
+              ProfileMenu(
+                  title: 'Usuario',
+                  value: 'Carlos Castellanos',
+                  onPressed: () {}),
+
               const SizedBox(height: TSizes.spaceBtwItems),
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),
-              
+
               //HEADER PERSONAL INFO
               const TSectionHeading(
-                  title: 'Personal Information', showActionButton: false),
+                  title: 'Información Personal', showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
-              
-              ProfileMenu(title: 'User ID', value: '543654', onPressed: () {}),
+
+              ProfileMenu(title: 'ID', value: '543654', onPressed: () {}),
               ProfileMenu(
-                  title: 'E-mail', value: 'carlos@gmail.com', onPressed: () {}),
+                  title: 'Correo', value: 'carlos@gmail.com', onPressed: () {}),
               ProfileMenu(
-                  title: 'Phone Number',
-                  value: '+503 73933502',
-                  onPressed: () {}),
-              ProfileMenu(title: 'Gender', value: 'Male', onPressed: () {}),
+                  title: 'Teléfono', value: '+503 73933502', onPressed: () {}),
+              ProfileMenu(title: 'Genero', value: 'Male', onPressed: () {}),
               ProfileMenu(
-                  title: 'Date of Birth',
-                  value: '24 March, 1000',
+                  title: 'Fecha de Nacimiento',
+                  value: '24 March, 1999',
                   onPressed: () {}),
 
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),
-              
+
               Center(
                 child: TextButton(
-                  onPressed: (){},
-                  child: const Text('Close Account', style: TextStyle(color: Colors.red)),
+                  onPressed: () {},
+                  child: const Text('Cerrar Cuenta',
+                      style: TextStyle(color: Colors.red)),
                 ),
               )
             ],
