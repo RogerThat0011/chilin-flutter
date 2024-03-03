@@ -42,7 +42,7 @@ class ProductCardVertical extends StatelessWidget {
                 children: [
                   //IMAGE
                   TRoundedImage(
-                      imageUrl: TImages.productImage1, applyImageRadius: true),
+                      imageUrl: TImages.productPupusas, applyImageRadius: true),
                   Positioned(
                       top: 0,
                       right: 0,
@@ -72,7 +72,7 @@ class ProductCardVertical extends StatelessWidget {
               children: [
                 const Padding(
                   padding: EdgeInsets.only(left: TSizes.sm),
-                  child: ProductPriceText(price: '1.0'),
+                  child: ProductPriceText(price: '1.50'),
                 ),
                 Container(
                   decoration: const BoxDecoration(
