@@ -33,7 +33,7 @@ class BrandCard extends StatelessWidget {
             Flexible(
               child: CircularImage(
                 isNetworkImage: false,
-                image: TImages.clothIcon,
+                image: TImages.pupusaIcon,
                 backgroundColor: Colors.transparent,
                 overlayColor: THelperFunctions.isDarkMode(context)
                     ? TColors.white
@@ -49,9 +49,9 @@ class BrandCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const BrandtitleWithVerifiedIcon(
-                      title: 'Nike', brandTextSize: TextSizes.large),
+                      title: 'Pupusas Tradicionales', brandTextSize: TextSizes.large),
                   Text(
-                    '256 products',
+                    '10 products',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium,
                   )

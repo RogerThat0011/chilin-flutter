@@ -16,12 +16,11 @@ class SortableProducts extends StatelessWidget {
         //DROPDOWN
         DropdownButtonFormField(
           items: [
-            'Name',
-            'Higher Price',
-            'Lower Price',
-            'Sale',
-            'Newest',
-            'Popularity'
+            'Nombre',
+            'Mayor Precio',
+            'Menor Precio',
+            'Nuevos',
+            'Populares'
           ]
               .map((option) => DropdownMenuItem(
                     value: option,
