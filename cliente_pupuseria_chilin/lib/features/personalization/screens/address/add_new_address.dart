@@ -9,7 +9,8 @@ class AddNewAddressScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TAppBar(showBackArrow: true, title: Text('Add new address')),
+      appBar:
+          const TAppBar(showBackArrow: true, title: Text('Nueva Dirección')),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(TSizes.defaultSpace),
@@ -18,13 +19,14 @@ class AddNewAddressScreen extends StatelessWidget {
               children: [
                 TextFormField(
                   decoration: const InputDecoration(
-                      prefixIcon: Icon(Iconsax.user), labelText: 'Name'),
+                      prefixIcon: Icon(Iconsax.user),
+                      labelText: 'Nombre de Dirección'),
                 ),
                 const SizedBox(height: TSizes.spaceBtwInputFields),
                 TextFormField(
                   decoration: const InputDecoration(
                       prefixIcon: Icon(Iconsax.mobile),
-                      labelText: 'Phone Number'),
+                      labelText: 'Número Telefónico'),
                 ),
                 const SizedBox(height: TSizes.spaceBtwInputFields),
                 Row(
@@ -33,7 +35,7 @@ class AddNewAddressScreen extends StatelessWidget {
                       child: TextFormField(
                         decoration: const InputDecoration(
                             prefixIcon: Icon(Iconsax.building_31),
-                            labelText: 'Street'),
+                            labelText: 'Calle'),
                       ),
                     ),
                     const SizedBox(width: TSizes.spaceBtwInputFields),
@@ -41,7 +43,7 @@ class AddNewAddressScreen extends StatelessWidget {
                       child: TextFormField(
                         decoration: const InputDecoration(
                             prefixIcon: Icon(Iconsax.code),
-                            labelText: 'Postal Code'),
+                            labelText: 'Código Postal'),
                       ),
                     ),
                   ],
@@ -53,7 +55,7 @@ class AddNewAddressScreen extends StatelessWidget {
                       child: TextFormField(
                         decoration: const InputDecoration(
                             prefixIcon: Icon(Iconsax.building),
-                            labelText: 'City'),
+                            labelText: 'Municipio'),
                       ),
                     ),
                     const SizedBox(width: TSizes.spaceBtwInputFields),
@@ -61,7 +63,7 @@ class AddNewAddressScreen extends StatelessWidget {
                       child: TextFormField(
                         decoration: const InputDecoration(
                             prefixIcon: Icon(Iconsax.activity),
-                            labelText: 'State'),
+                            labelText: 'Departamento'),
                       ),
                     ),
                   ],
@@ -70,9 +72,14 @@ class AddNewAddressScreen extends StatelessWidget {
                 TextFormField(
                     decoration: const InputDecoration(
                         prefixIcon: Icon(Iconsax.global),
-                        labelText: 'Country')),
+                        enabled: false,
+                        labelText: 'El Salvador')),
                 const SizedBox(height: TSizes.defaultSpace),
-                SizedBox(width: double.infinity, child: ElevatedButton(onPressed: (){}, child: const Text('Save')),)
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                      onPressed: () {}, child: const Text('Save')),
+                )
               ],
             ),
           ),
