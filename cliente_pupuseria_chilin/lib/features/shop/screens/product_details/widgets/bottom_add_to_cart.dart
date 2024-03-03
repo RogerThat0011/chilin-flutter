@@ -52,7 +52,7 @@ class BottomAddToCart extends StatelessWidget {
                   padding: const EdgeInsets.all(TSizes.md),
                   backgroundColor: TColors.black,
                   side: const BorderSide(color: TColors.black)),
-              child: const Text('Add to Cart'))
+              child: const Text('Agregar al Carrito'))
         ],
       ),
     );

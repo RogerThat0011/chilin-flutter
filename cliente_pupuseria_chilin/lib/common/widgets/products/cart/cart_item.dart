@@ -32,22 +32,19 @@ class TCartItem extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const BrandtitleWithVerifiedIcon(title: 'Nike'),
+              const BrandtitleWithVerifiedIcon(title: 'Pupusas Tradicionales'),
               const Flexible(
                   child: ProductTitleText(
-                      title: 'Black Sport shoes', maxLines: 1)),
+                      title: 'Pupusa de frijol con queso', maxLines: 1)),
+
               //ATTRIBUTES
               Text.rich(TextSpan(children: [
                 TextSpan(
-                    text: 'Color',
+                    text: 'Masa:',
                     style: Theme.of(context).textTheme.bodySmall),
+                const WidgetSpan(child: SizedBox(width: 5)),
                 TextSpan(
-                    text: 'Green',
-                    style: Theme.of(context).textTheme.bodyLarge),
-                TextSpan(
-                    text: 'Size', style: Theme.of(context).textTheme.bodySmall),
-                TextSpan(
-                    text: 'UK 08',
+                    text: 'Arroz',
                     style: Theme.of(context).textTheme.bodyLarge),
               ]))
             ],

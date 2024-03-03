@@ -38,12 +38,30 @@ class ProductCardVertical extends StatelessWidget {
               height: 180,
               padding: const EdgeInsets.all(TSizes.sm),
               backgroundColor: dark ? TColors.dark : TColors.light,
-              child: const Stack(
+              child: Stack(
                 children: [
                   //IMAGE
-                  TRoundedImage(
+                  const TRoundedImage(
                       imageUrl: TImages.productImage1, applyImageRadius: true),
+                  //TAG
                   Positioned(
+                    top: 12,
+                    child: RoundedContainer(
+                      radius: TSizes.sm,
+                      backgroundColor: TColors.secondary.withOpacity(0.8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: TSizes.sm, vertical: TSizes.xs),
+                      child: Text(
+                        '25%',
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge!
+                            .apply(color: TColors.black),
+                      ),
+                    ),
+                  ),
+
+                  const Positioned(
                       top: 0,
                       right: 0,
                       child:
@@ -59,9 +77,9 @@ class ProductCardVertical extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ProductTitleText( title: 'Pupusas de Frijol con Queso',smallSize: true,),
+                    ProductTitleText( title: 'Green Nike Air Shoes',smallSize: true,),
                     SizedBox(height: TSizes.spaceBtwItems / 2),
-                    BrandtitleWithVerifiedIcon(title: 'Pupusas Tradicionales'),
+                    BrandtitleWithVerifiedIcon(title: 'Nike'),
                   ]),
             ),
 
@@ -72,7 +90,7 @@ class ProductCardVertical extends StatelessWidget {
               children: [
                 const Padding(
                   padding: EdgeInsets.only(left: TSizes.sm),
-                  child: ProductPriceText(price: '1.0'),
+                  child: ProductPriceText(price: '35.0'),
                 ),
                 Container(
                   decoration: const BoxDecoration(

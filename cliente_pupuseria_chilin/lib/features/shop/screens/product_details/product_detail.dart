@@ -26,29 +26,42 @@ class ProductDetail extends StatelessWidget {
             const ProductImageSlider(),
             //PRODUCT DETAILS
             Padding(
-              padding: const EdgeInsets.only(right: TSizes.defaultSpace, left: TSizes.defaultSpace, bottom: TSizes.defaultSpace),
+              padding: const EdgeInsets.only(
+                  right: TSizes.defaultSpace,
+                  left: TSizes.defaultSpace,
+                  bottom: TSizes.defaultSpace),
               child: Column(
                 children: [
                   //RATING
-                  const RatingAndShare(),
+                  //const RatingAndShare(),
                   //PRICE, TITLE, ETC
                   const ProductMetaData(),
+
+                  const SizedBox(height: TSizes.spaceBtwSections),
                   //ATTRIBUTES
                   const ProductAttributes(),
+
                   const SizedBox(height: TSizes.spaceBtwSections),
                   //CHECKOUT
-                  SizedBox(width: double.infinity, child: ElevatedButton(onPressed: (){}, child: const Text('Checkout'))),
+                  SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                          onPressed: () {}, child: const Text('Checkout'))),
                   const SizedBox(height: TSizes.spaceBtwSections),
                   //DESCRIPTION
-                  const TSectionHeading(title: 'Description', showActionButton: false),
+                  const TSectionHeading(
+                      title: 'Descripcion', showActionButton: false),
                   const SizedBox(height: TSizes.spaceBtwItems),
-                  const ReadMoreText('This is a product description just for test or anything else just to prove the show more text, and i need to add more text because it doesnt shows',
+                  const ReadMoreText(
+                    'Pupusa de frijol con queso, hecha totalmente a mano.',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: ' Show more',
                     trimExpandedText: ' Less',
-                    moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
-                    lessStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                    moreStyle:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                    lessStyle:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
                   ),
                   //REVIEWS
                   const Divider(),
@@ -56,8 +69,12 @@ class ProductDetail extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const TSectionHeading(title: 'Reviews(199)',showActionButton: false),
-                      IconButton(onPressed: () => Get.to(() => const ProductReviewScreen()), icon: const Icon(Iconsax.arrow_right_3, size: 18))
+                      const TSectionHeading(
+                          title: 'Reseñas(199)', showActionButton: false),
+                      IconButton(
+                          onPressed: () =>
+                              Get.to(() => const ProductReviewScreen()),
+                          icon: const Icon(Iconsax.arrow_right_3, size: 18))
                     ],
                   ),
                   const SizedBox(height: TSizes.spaceBtwSections),

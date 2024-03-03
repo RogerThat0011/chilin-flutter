@@ -11,7 +11,7 @@ class ProductReviewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TAppBar(title: Text('Reviews and Ratings'), showBackArrow: true),
+      appBar: const TAppBar(title: Text('Reseñas y Calificaciones'), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(TSizes.defaultSpace),
@@ -19,13 +19,13 @@ class ProductReviewScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                  'Ratings and reviews are verified and are from people who use the same type of device that you use.'),
+                  'Las reseñas y calificaciones son especificos de clientes de la Pupuseria Chilin'),
               const SizedBox(height: TSizes.spaceBtwItems),
 
               //OVERALL PRODUCT RATINGS
               const OverallProductRating(),
               const ProductRatingBar(rating: 3.5),
-              Text("12,611", style: Theme.of(context).textTheme.bodySmall),
+              Text("100", style: Theme.of(context).textTheme.bodySmall),
               const SizedBox(height: TSizes.spaceBtwSections),
 
               //USER REVIEWS LIST

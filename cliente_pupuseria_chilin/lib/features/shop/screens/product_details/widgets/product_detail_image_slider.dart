@@ -23,9 +23,9 @@ class ProductImageSlider extends StatelessWidget {
     return TCurvedEdgeWidget(
       child: Container(
         color: dark ? TColors.darkerGrey : TColors.light,
-        child: Stack(
+        child: const Stack(
           children: [
-            const SizedBox(
+            SizedBox(
                 height: 400,
                 child: Padding(
                   padding:
@@ -36,7 +36,7 @@ class ProductImageSlider extends StatelessWidget {
                 )),
     
             //SLIDER IMAGE
-            Positioned(
+            /*Positioned(
               right: 0,
               bottom: 30,
               left: TSizes.defaultSpace,
@@ -57,10 +57,10 @@ class ProductImageSlider extends StatelessWidget {
                         const SizedBox(width: TSizes.spaceBtwItems),
                     itemCount: 4),
               ),
-            ),
+            ),*/
     
             //APPBAR
-            const TAppBar(
+            TAppBar(
               showBackArrow: true,
               actions: [
                 CircularIcon(

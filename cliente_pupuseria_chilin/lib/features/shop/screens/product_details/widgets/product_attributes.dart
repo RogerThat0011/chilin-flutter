@@ -16,7 +16,7 @@ class ProductAttributes extends StatelessWidget {
 
     return Column(
       children: [
-        RoundedContainer(
+        /*RoundedContainer(
           padding: const EdgeInsets.all(TSizes.md),
           backgroundColor: dark ? TColors.darkerGrey : TColors.grey,
           child: Column(
@@ -94,12 +94,13 @@ class ProductAttributes extends StatelessWidget {
               ],
             )
           ],
-        ),
+        ),*/
+
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const TSectionHeading(
-              title: 'Size',
+              title: 'Tipo de Masa',
               showActionButton: false,
             ),
             const SizedBox(height: TSizes.spaceBtwItems / 2),
@@ -107,11 +108,9 @@ class ProductAttributes extends StatelessWidget {
               spacing: 8,
               children: [
                 ChoiceChipProduct(
-                    text: 'EU 34', selected: true, onSelected: (value) {}),
+                    text: 'Arroz', selected: true, onSelected: (value) {}),
                 ChoiceChipProduct(
-                    text: 'EU 36', selected: true, onSelected: (value) {}),
-                ChoiceChipProduct(
-                    text: 'EU 38', selected: true, onSelected: (value) {}),
+                    text: 'Maiz', selected: true, onSelected: (value) {})
               ],
             )
           ],

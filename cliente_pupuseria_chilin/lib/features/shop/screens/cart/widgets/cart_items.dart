@@ -33,7 +33,7 @@ class TCartItems extends StatelessWidget {
                   ProductQuantityWithAddRemove(),
                 ],
               ),
-              ProductPriceText(price: '256'),
+              ProductPriceText(price: '2'),
             ],
           )
         ],

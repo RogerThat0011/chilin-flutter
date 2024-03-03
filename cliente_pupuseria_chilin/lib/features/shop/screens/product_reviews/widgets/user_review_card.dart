@@ -21,9 +21,9 @@ class UserReviewCard extends StatelessWidget {
             Row(
               children: [
                 const CircleAvatar(
-                    backgroundImage: AssetImage(TImages.userProfileImage1)),
+                    backgroundImage: AssetImage(TImages.userProfileImage2)),
                 const SizedBox(width: TSizes.spaceBtwItems),
-                Text("John Doe", style: Theme.of(context).textTheme.titleLarge)
+                Text("Carlos Castellanos", style: Theme.of(context).textTheme.titleLarge)
               ],
             ),
             IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
@@ -41,10 +41,10 @@ class UserReviewCard extends StatelessWidget {
         ),
         const SizedBox(height: TSizes.spaceBtwItems),
         const ReadMoreText(
-          'is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
+          'Recomiendo demasiado las pupusas de frijol con queso de esta pupuseria, estan muy bien de sabor.',
           trimLines: 1,
-          trimExpandedText: ' show less',
-          trimCollapsedText: ' show more',
+          trimExpandedText: ' ver mas',
+          trimCollapsedText: ' ver menos',
           trimMode: TrimMode.Line,
           moreStyle: TextStyle(
               fontSize: 14,
@@ -67,7 +67,7 @@ class UserReviewCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Store',
+                    Text('Pupuseria Chilin',
                         style: Theme.of(context).textTheme.titleMedium),
                     Text('01 Nov, 2023',
                         style: Theme.of(context).textTheme.bodyMedium),
@@ -75,10 +75,10 @@ class UserReviewCard extends StatelessWidget {
                 ),
                 const SizedBox(height: TSizes.spaceBtwItems),
                 const ReadMoreText(
-                  'is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
+                  '¡Muchas gracias por su calificacion y reseña!',
                   trimLines: 1,
-                  trimExpandedText: ' show less',
-                  trimCollapsedText: ' show more',
+                  trimExpandedText: ' ver mas',
+                  trimCollapsedText: ' ver menos',
                   trimMode: TrimMode.Line,
                   moreStyle: TextStyle(
                       fontSize: 14,
