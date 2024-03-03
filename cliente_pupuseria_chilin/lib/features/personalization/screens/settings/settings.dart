@@ -26,14 +26,15 @@ class SettingScreen extends StatelessWidget {
                 child: Column(
               children: [
                 TAppBar(
-                    title: Text('Account',
+                    title: Text('Perfil',
                         style: Theme.of(context)
                             .textTheme
                             .headlineMedium!
                             .apply(color: TColors.white))),
 
                 //USER PROFILE
-                UserProfileTitle(onPressed: () => Get.to(() => const ProfileScreen())),
+                UserProfileTitle(
+                    onPressed: () => Get.to(() => const ProfileScreen())),
                 const SizedBox(height: TSizes.spaceBtwSections),
               ],
             )),
@@ -44,33 +45,34 @@ class SettingScreen extends StatelessWidget {
               child: Column(
                 children: [
                   const TSectionHeading(
-                      title: 'Account Settings', showActionButton: false),
+                      title: 'Opciones de Cuenta',
+                      showActionButton: false),
                   const SizedBox(height: TSizes.spaceBtwSections),
                   SettingsMenuTile(
                     icon: Iconsax.safe_home,
-                    title: 'My Addresses',
-                    subTitle: 'Set shopping delivery address',
+                    title: 'Mis Direcciones',
+                    subTitle: 'Direcciones para Delivery (Próximamente)',
                     onTap: () => Get.to(() => const UserAddressScreen()),
                   ),
                   SettingsMenuTile(
                     icon: Iconsax.shopping_cart,
-                    title: 'My Cart',
-                    subTitle: 'Add, remove products and move to checkout',
+                    title: 'Mi Carrito',
+                    subTitle: 'Agregar o Eliminar Productos para Pedidos',
                     onTap: () {},
                   ),
                   SettingsMenuTile(
                     icon: Iconsax.bag_tick,
-                    title: 'My Orders',
-                    subTitle: 'In-progress and completed Orders',
+                    title: 'Mis Ordenes',
+                    subTitle: 'Estado de Ordenes Realizadas',
                     onTap: () => Get.to(() => const OrderScreen()),
                   ),
-                  SettingsMenuTile(
+                  /*SettingsMenuTile(
                     icon: Iconsax.bank,
                     title: 'Bank Account',
                     subTitle: 'Withdraw balance to registered bank account',
                     onTap: () {},
-                  ),
-                  SettingsMenuTile(
+                  ),*/
+                  /*SettingsMenuTile(
                     icon: Iconsax.discount_shape,
                     title: 'My Coupons',
                     subTitle: 'List of all the discounted coupons',
@@ -87,8 +89,8 @@ class SettingScreen extends StatelessWidget {
                     title: 'Account Privacy',
                     subTitle: 'Manage data usage and connected accounts',
                     onTap: () {},
-                  ),
-
+                  ),*/
+/*
                   //SETTINGS
                   const SizedBox(height: TSizes.spaceBtwSections),
                   const TSectionHeading(
@@ -114,12 +116,13 @@ class SettingScreen extends StatelessWidget {
                       title: 'HD Image Quality',
                       subTitle: 'Set image quality to be seen',
                       trailing: Switch(value: true, onChanged: (value) {})),
-                
+                  */
                   //LOGOUT BUTTON
                   const SizedBox(height: TSizes.spaceBtwSections),
                   SizedBox(
                     width: double.infinity,
-                    child: OutlinedButton(onPressed: (){}, child: const Text('Logout')),
+                    child: OutlinedButton(
+                        onPressed: () {}, child: const Text('Cerrar Sesión')),
                   ),
                   const SizedBox(height: TSizes.spaceBtwSections * 2.5)
                 ],
