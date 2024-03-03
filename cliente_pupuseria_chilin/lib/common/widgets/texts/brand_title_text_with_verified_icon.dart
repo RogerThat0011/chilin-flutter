@@ -36,8 +36,7 @@ class BrandtitleWithVerifiedIcon extends StatelessWidget {
               textAlign: textAlign,
               brandTextSize: brandTextSize),
         ),
-        const SizedBox(width: TSizes.xs),
-        Icon(Iconsax.verify5, color: iconColor, size: TSizes.iconXs)
+        const SizedBox(width: TSizes.xs)
       ],
     );
   }
