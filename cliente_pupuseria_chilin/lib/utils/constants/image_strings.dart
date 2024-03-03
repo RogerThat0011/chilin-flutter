@@ -25,6 +25,7 @@ class TImages {
   static const String furnitureIcon = "assets/icons/categories/icons8-dining-chair-64.png";
   static const String jeweleryIcon = "assets/icons/categories/icons8-sparkling-diamond-64.png";
   static const String electronicsIcon = "assets/icons/categories/icons8-smartphone-64.png";
+
   static const String pupusaIcon = "assets/icons/categories/pupusas.png";
 
   // -- Brand Icons
@@ -130,7 +131,7 @@ class TImages {
   static const String productImage75 = "assets/images/products/slipper-product-2.png";
   static const String productImage76 = "assets/images/products/slipper-product-3.png";
   static const String productImage77= "assets/images/products/slipper-product.png";
-
+  static const String productPupusas= "assets/images/products/pupusas.jpg";
 
 
 

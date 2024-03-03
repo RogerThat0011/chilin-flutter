@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: TSizes.spaceBtwSections),
 
                   TSearchContainer(
-                    text: 'Search in Store',
+                    text: 'Buscar en la tienda',
                   ),
 
                   SizedBox(height: TSizes.spaceBtwSections),
@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         TSectionHeading(
-                            title: 'Popular Categories',
+                            title: 'Categorias Populares',
                             showActionButton: false,
                             textColor: Colors.white),
                         SizedBox(height: TSizes.spaceBtwItems),
@@ -66,8 +66,8 @@ class HomeScreen extends StatelessWidget {
                     TImages.promoBanner2,
                     TImages.promoBanner3
                   ]),
-
-                  TSectionHeading(title: 'Popular Products', onPressed: () => Get.to(() => const AllProducts())),
+                  const SizedBox(height: TSizes.spaceBtwSections),
+                  TSectionHeading(title: 'Productos Populares', onPressed: () => Get.to(() => const AllProducts())),
                   const SizedBox(height: TSizes.spaceBtwItems),
 
                   //PRODUCTS
