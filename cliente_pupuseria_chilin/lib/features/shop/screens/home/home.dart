@@ -62,9 +62,9 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   const TPromoSlider(banners: [
-                    TImages.promoBanner1,
-                    TImages.promoBanner2,
-                    TImages.promoBanner3
+                    TImages.bannerChilin1,
+                    TImages.bannerChilin2,
+                    TImages.bannerChilin3
                   ]),
                   const SizedBox(height: TSizes.spaceBtwSections),
                   TSectionHeading(title: 'Productos Populares', onPressed: () => Get.to(() => const AllProducts())),

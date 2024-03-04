@@ -27,6 +27,7 @@ class TImages {
   static const String electronicsIcon = "assets/icons/categories/icons8-smartphone-64.png";
 
   static const String pupusaIcon = "assets/icons/categories/pupusas.png";
+  static const String pupusaIconBlanca = "assets/icons/categories/pupusas-blanca.png";
 
   // -- Brand Icons
   static const String nikeLogo = "assets/icons/brands/nike.png";
@@ -152,6 +153,11 @@ class TImages {
   static const String banner6 = "assets/images/banners/banner_6.jpg";
   static const String banner7 = "assets/images/banners/banner_7.jpg";
   static const String banner8 = "assets/images/banners/banner_8.jpg";
+
+  static const String bannerChilin1 = "assets/images/products/banner-1-chilin.jpg";
+  static const String bannerChilin2 = "assets/images/products/banner-2-chilin.jpg";
+  static const String bannerChilin3 = "assets/images/products/banner-3-chilin.jpg";
+
 
 
   //Profile
