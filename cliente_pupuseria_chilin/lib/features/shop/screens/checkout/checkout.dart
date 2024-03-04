@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/common/widgets/appbar/appbar.dart';
-import 'package:t_store/common/widgets/products/cart/coupon_widget.dart';
 import 'package:t_store/common/widgets/products/product_cards/rounded_cointainer.dart';
 import 'package:t_store/common/widgets/success_screen/succes_screen.dart';
 import 'package:t_store/features/shop/screens/cart/widgets/cart_items.dart';
@@ -69,12 +68,12 @@ class CheckoutScreen extends StatelessWidget {
         padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: ElevatedButton(
           onPressed: () => Get.to(() => SuccessScreen(
-                image: TImages.successfulPaymentIcon,
-                title: 'Payment Success!',
-                subTitle: 'Your item will be shipped soon!',
+                image: TImages.ordenExitosa,
+                title: '¡Orden realizada con exito!',
+                subTitle: 'Pronto te notificaremos cuando tu pedido este listo para retirarlo en la pupuseria.',
                 onPressed: () => Get.offAll(() => const NavigationMenu()),
               )),
-          child: const Text('Pagar \$8.50'),
+          child: const Text('Confirmar Orden \$8.50'),
         ),
       ),
     );

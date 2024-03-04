@@ -25,10 +25,10 @@ class BillingPaymentSection extends StatelessWidget {
               height: 35,
               backgroundColor: dark ? TColors.light : TColors.white,
               padding: const EdgeInsets.all(TSizes.sm),
-              child: const Image(image: AssetImage(TImages.paypal), fit: BoxFit.contain),
+              child: const Image(image: AssetImage(TImages.dolarIcon), fit: BoxFit.contain),
             ),
             const SizedBox(width: TSizes.spaceBtwItems / 2),
-            Text('Retiro en tienda', style: Theme.of(context).textTheme.bodyLarge),
+            Text('Efectivo - Retiro en tienda', style: Theme.of(context).textTheme.bodyLarge),
           ],
         )
       ],
