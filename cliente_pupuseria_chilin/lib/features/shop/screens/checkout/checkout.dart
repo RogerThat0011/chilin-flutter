@@ -24,7 +24,7 @@ class CheckoutScreen extends StatelessWidget {
     return Scaffold(
       appBar: TAppBar(
           showBackArrow: true,
-          title: Text('Order Review',
+          title: Text('Detalle de la orden',
               style: Theme.of(context).textTheme.headlineSmall)),
       body: SingleChildScrollView(
         child: Padding(
@@ -35,8 +35,8 @@ class CheckoutScreen extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwSections),
 
               //COUPON
-              const CouponCode(),
-              const SizedBox(height: TSizes.spaceBtwSections),
+              //const CouponCode(),
+              //const SizedBox(height: TSizes.spaceBtwSections),
 
               //BILLING SECTION
               RoundedContainer(
@@ -74,7 +74,7 @@ class CheckoutScreen extends StatelessWidget {
                 subTitle: 'Your item will be shipped soon!',
                 onPressed: () => Get.offAll(() => const NavigationMenu()),
               )),
-          child: const Text('Checkout \$256'),
+          child: const Text('Pagar \$8.50'),
         ),
       ),
     );
