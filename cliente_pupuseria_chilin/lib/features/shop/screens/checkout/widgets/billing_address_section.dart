@@ -11,7 +11,7 @@ class BillingAddressSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TSectionHeading(title: 'Shipping Address', buttonTitle: 'Change', onPressed: (){}),
+        TSectionHeading(title: 'Datos del cliente', buttonTitle: 'Cambiar', onPressed: (){}),
         Text('Carlos Castellanos', style: Theme.of(context).textTheme.bodyLarge),
         Row(
           children: [

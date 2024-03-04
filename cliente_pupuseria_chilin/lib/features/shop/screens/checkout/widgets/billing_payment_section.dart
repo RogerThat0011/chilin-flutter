@@ -16,7 +16,7 @@ class BillingPaymentSection extends StatelessWidget {
 
     return Column(
       children: [
-        TSectionHeading(title: 'Payment Method', buttonTitle: 'Change', onPressed: (){}),
+        TSectionHeading(title: 'Metodo de pago', buttonTitle: 'Cambiar', onPressed: (){}),
         const SizedBox(height: TSizes.spaceBtwItems / 2),
         Row(
           children: [
@@ -28,7 +28,7 @@ class BillingPaymentSection extends StatelessWidget {
               child: const Image(image: AssetImage(TImages.paypal), fit: BoxFit.contain),
             ),
             const SizedBox(width: TSizes.spaceBtwItems / 2),
-            Text('Paypal', style: Theme.of(context).textTheme.bodyLarge),
+            Text('Retiro en tienda', style: Theme.of(context).textTheme.bodyLarge),
           ],
         )
       ],
