@@ -59,11 +59,11 @@ class TTexts {
 
 
   // -- Product
-  static const String popularProducts = "Popular Products";
+  static const String popularProducts = "Productos Populares";
 
   // -- Home
-  static const String homeAppbarTitle = "Good day for shopping";
-  static const String homeAppbarSubTitle = "Taimoor Sikander";
+  static const String homeAppbarTitle = "Bienvenido, a Chilin,";
+  static const String homeAppbarSubTitle = "Carlos Castellanos";
 
 
 }

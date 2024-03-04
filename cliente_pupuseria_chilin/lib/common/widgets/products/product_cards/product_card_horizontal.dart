@@ -36,7 +36,7 @@ class ProductCardHorizontal extends StatelessWidget {
                   height: 120,
                   width: 120,
                   child: TRoundedImage(
-                      imageUrl: TImages.productImage1, applyImageRadius: true),
+                      imageUrl: TImages.productImage1, applyImageRadius: true),//cambiar img to pupusas
                 ),
                 Positioned(
                   top: 12,

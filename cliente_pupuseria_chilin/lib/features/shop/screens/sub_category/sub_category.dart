@@ -12,7 +12,7 @@ class SubCategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TAppBar(title: Text('Sports Shirts'), showBackArrow: true),
+      appBar: const TAppBar(title: Text('Pupusas Tradicionales'), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(TSizes.defaultSpace),
@@ -21,7 +21,7 @@ class SubCategoriesScreen extends StatelessWidget {
               //BANNER
               const TRoundedImage(
                   width: double.infinity,
-                  imageUrl: TImages.promoBanner3,
+                  imageUrl: TImages.promoBanner3, //cambiar img con una pupusa
                   applyImageRadius: true),
               const SizedBox(height: TSizes.spaceBtwSections),
 
@@ -29,7 +29,7 @@ class SubCategoriesScreen extends StatelessWidget {
               Column(
                 children: [
                   //HEADING
-                  TSectionHeading(title: 'Sport Shorts', onPressed: () {}),
+                  TSectionHeading(title: 'Pupusas Tradicionales', onPressed: () {}),
                   const SizedBox(height: TSizes.spaceBtwSections / 2),
 
                   SizedBox(

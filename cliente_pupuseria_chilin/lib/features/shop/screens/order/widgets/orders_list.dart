@@ -15,7 +15,7 @@ class OrderListItems extends StatelessWidget {
       shrinkWrap: true,
       itemCount: 5,
       separatorBuilder: (_, __) => const SizedBox(height: TSizes.spaceBtwItems),
-      itemBuilder:(_, index) => RoundedContainer(
+      itemBuilder: (_, index) => RoundedContainer(
         padding: const EdgeInsets.all(TSizes.md),
         showBorder: true,
         backgroundColor: dark ? TColors.dark : TColors.light,
@@ -34,7 +34,7 @@ class OrderListItems extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Processing',
+                        'Preparando ...',
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge!
@@ -45,10 +45,11 @@ class OrderListItems extends StatelessWidget {
                     ],
                   ),
                 ),
-      
+
                 IconButton(
                     onPressed: () {},
-                    icon: const Icon(Iconsax.arrow_right_34, size: TSizes.iconSm))
+                    icon:
+                        const Icon(Iconsax.arrow_right_34, size: TSizes.iconSm))
               ],
             ),
             const SizedBox(height: TSizes.spaceBtwItems),
@@ -67,7 +68,7 @@ class OrderListItems extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              'Order',
+                              'Orden',
                               style: Theme.of(context).textTheme.labelMedium,
                             ),
                             Text('[#34s3gaf2]',
@@ -91,7 +92,7 @@ class OrderListItems extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              'Shipping Date',
+                              'Fecha de Pedido',
                               style: Theme.of(context).textTheme.labelMedium,
                             ),
                             Text('29 Feb 2024',
