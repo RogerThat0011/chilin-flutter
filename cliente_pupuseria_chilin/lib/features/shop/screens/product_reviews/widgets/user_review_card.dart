@@ -43,8 +43,8 @@ class UserReviewCard extends StatelessWidget {
         const ReadMoreText(
           'Recomiendo demasiado las pupusas de frijol con queso de esta pupuseria, estan muy bien de sabor.',
           trimLines: 1,
-          trimExpandedText: ' ver mas',
-          trimCollapsedText: ' ver menos',
+          trimExpandedText: ' ver menos',
+          trimCollapsedText: ' ver mas',
           trimMode: TrimMode.Line,
           moreStyle: TextStyle(
               fontSize: 14,
@@ -77,8 +77,8 @@ class UserReviewCard extends StatelessWidget {
                 const ReadMoreText(
                   '¡Muchas gracias por su calificacion y reseña!',
                   trimLines: 1,
-                  trimExpandedText: ' ver mas',
-                  trimCollapsedText: ' ver menos',
+                  trimExpandedText: ' ver menos',
+                  trimCollapsedText: ' ver mas',
                   trimMode: TrimMode.Line,
                   moreStyle: TextStyle(
                       fontSize: 14,

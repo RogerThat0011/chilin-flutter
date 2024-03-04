@@ -14,7 +14,7 @@ class CartScreen extends StatelessWidget {
       appBar: TAppBar(
           showBackArrow: true,
           title:
-              Text('Cart', style: Theme.of(context).textTheme.headlineSmall)),
+              Text('Carrito', style: Theme.of(context).textTheme.headlineSmall)),
       body: const Padding(
         padding: EdgeInsets.all(TSizes.defaultSpace),
         child: TCartItems(),

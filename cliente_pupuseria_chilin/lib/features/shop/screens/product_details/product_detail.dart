@@ -6,7 +6,6 @@ import 'package:t_store/features/shop/screens/product_details/widgets/bottom_add
 import 'package:t_store/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:t_store/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
 import 'package:t_store/features/shop/screens/product_details/widgets/product_meta_data.dart';
-import 'package:t_store/features/shop/screens/product_details/widgets/rating_share.dart';
 import 'package:t_store/features/shop/screens/product_reviews/widgets/product_reviews.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:readmore/readmore.dart';
@@ -43,11 +42,11 @@ class ProductDetail extends StatelessWidget {
 
                   const SizedBox(height: TSizes.spaceBtwSections),
                   //CHECKOUT
-                  SizedBox(
+                  /*SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                          onPressed: () {}, child: const Text('Checkout'))),
-                  const SizedBox(height: TSizes.spaceBtwSections),
+                          onPressed: () {}, child: const Text('Verificar'))),
+                  const SizedBox(height: TSizes.spaceBtwSections),*/
                   //DESCRIPTION
                   const TSectionHeading(
                       title: 'Descripcion', showActionButton: false),

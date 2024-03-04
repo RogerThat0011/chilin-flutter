@@ -18,7 +18,7 @@ class TCartItem extends StatelessWidget {
     return Row(
       children: [
         TRoundedImage(
-          imageUrl: TImages.productImage1,
+          imageUrl: TImages.productPupusas,
           width: 60,
           height: 60,
           padding: const EdgeInsets.all(TSizes.sm),
