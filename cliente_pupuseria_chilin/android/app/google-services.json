@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "543987647187",
+    "project_id": "pupuseriachilin",
+    "storage_bucket": "pupuseriachilin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543987647187:android:096771e09a47c715b38a26",
+        "android_client_info": {
+          "package_name": "com.example.cliente_chilin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543987647187-4t88nsa76ui1lmn5kopv5j9rt3loerpl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1tCyNfcCWbXNvs5lyhTSc48uVX8XHyB8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543987647187-4t88nsa76ui1lmn5kopv5j9rt3loerpl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
