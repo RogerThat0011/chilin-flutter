@@ -69,6 +69,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '543987647187',
     projectId: 'pupuseriachilin',
     storageBucket: 'pupuseriachilin.appspot.com',
+    androidClientId: '543987647187-gm21oq8541om66818eopsm3n9dbl6g3d.apps.googleusercontent.com',
     iosClientId: '543987647187-ee4smmfrlj34mp8huub9dpsg54k0nqr1.apps.googleusercontent.com',
     iosBundleId: 'com.example.tStore',
   );
