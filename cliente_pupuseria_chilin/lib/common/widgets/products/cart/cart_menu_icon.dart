@@ -32,6 +32,7 @@ class TCartCounterIcon extends StatelessWidget {
               color: iconColor,
             )),
         Positioned(
+          top: 5,
           right: 0,
           child: Container(
             width: 18,

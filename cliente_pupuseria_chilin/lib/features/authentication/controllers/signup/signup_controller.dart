@@ -27,7 +27,7 @@ class SignupController extends GetxController {
   Future <void> signup() async {
     try {
       //LOADING
-      //FullScreenLoader.openLoadingDialog('Estamos procesando tu informacion...', TImages.productsIllustration);
+      FullScreenLoader.openLoadingDialog('Estamos procesando tu informacion...', TImages.docerAnimation);
 
       //VERIFY INTERNET CONNECTION
       final isConnected = await NetworkManager.instance.isConnected();
@@ -74,7 +74,7 @@ class SignupController extends GetxController {
 
       Loaders.successSnackBar(title: '¡Satisfactorio!', message: 'Tu cuenta ha sido creada con exito, verifica tu email para continuar.');
 
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(() => VerifyEmailScreen(email: email.text.trim()));
     } catch (e) {
       FullScreenLoader.stopLoading();
 

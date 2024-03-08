@@ -54,7 +54,7 @@ class TTexts {
   static const String confirmEmail = "Verifica tu correo electronico!";
   static const String confirmEmailSubTitle = "Congratulations! Your Account Awaits: Verify Your Email to Start Shopping and Experience a World of Unrivaled Deals and Personalized Offers.";
   static const String emailNotReceivedMessage = "Didn’t get the email? Check your junk/spam or resend it.";
-  static const String yourAccountCreatedTitle = "Tu cuenta fue creada con exito!";
+  static const String yourAccountCreatedTitle = "¡Tu cuenta fue creada con exito!";
   static const String yourAccountCreatedSubTitle = "Bienvenido a Pupuseria Chilin!";
 
 
@@ -62,7 +62,7 @@ class TTexts {
   static const String popularProducts = "Productos Populares";
 
   // -- Home
-  static const String homeAppbarTitle = "Bienvenido a la Pupuseria Chilin,";
+  static const String homeAppbarTitle = "Bienvenido a Pupuseria Chilin,";
   static const String homeAppbarSubTitle = "Carlos Castellanos";
 
 
