@@ -31,7 +31,7 @@ class UserModel {
     String lastName = nameParts.length > 1 ? nameParts[1].toLowerCase() : "";
 
     String camelCaseUsername = '$firstName$lastName';
-    String usernameWithPrefix = "cwt_$camelCaseUsername";
+    String usernameWithPrefix = "pchilin_$camelCaseUsername";
     return usernameWithPrefix;
   }
 
@@ -67,7 +67,8 @@ class UserModel {
           phoneNumber: data['numeroTelefono'] ?? '',
           profilePicture: data['fotoPerfil'] ?? ''
       );
+    }else{
+     return UserModel.empty();
     }
-    throw Exception("El documento esta vacio");
   }
 }

@@ -23,7 +23,7 @@ class NetworkManager extends GetxController{
   Future<void> _updateConnectionStatus(ConnectivityResult result) async{
     _connectionStatus.value = result;
     if(_connectionStatus.value == ConnectivityResult.none){
-      Loaders.warningSnackBar(title: 'No hay conexion a internet');
+      Loaders.customToast(message: 'No hay conexion a internet');
     }
   }
 

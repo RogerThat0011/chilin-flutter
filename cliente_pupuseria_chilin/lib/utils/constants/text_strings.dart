@@ -48,7 +48,7 @@ class TTexts {
   static const String loginSubTitle = "Puedes iniciar sesion con tus credenciales";
   static const String signupTitle = "Vamos a crear tu cuenta";
   static const String forgetPasswordTitle = "Olvidaste tu contraseña";
-  static const String forgetPasswordSubTitle = "No te preocupes, a veces las personas tambien olvidan su contraseña, por favor ingresa tu correo electronico para que podamos enviarte un link para resetear tu contraseña";
+  static const String forgetPasswordSubTitle = "No te preocupes, a veces las personas tambien olvidan su contraseña, por favor ingresa tu correo electronico para que podamos enviarte un link para restablecer tu contraseña";
   static const String changeYourPasswordTitle = "Se envio el correo para actualizar la contraseña";
   static const String changeYourPasswordSubTitle = "La seguridad de tu cuenta es nuestra prioridad! Te hemos enviado un enlance para que cambies tu contraseña y mantener tu contraseña actualizada";
   static const String confirmEmail = "Verifica tu correo electronico!";
