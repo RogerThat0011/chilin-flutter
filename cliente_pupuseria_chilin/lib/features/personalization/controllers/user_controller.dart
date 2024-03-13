@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:t_store/data/repositories/repositories/authentication/authentication_repository.dart';
 import 'package:t_store/data/repositories/repositories/user/user_repository.dart';
 import 'package:t_store/features/personalization/models/user_model.dart';
@@ -14,7 +15,9 @@ import 'package:t_store/utils/popups/full_screen_loader.dart';
 import 'package:t_store/utils/popups/loaders.dart';
 
 class UserController extends GetxController {
+
   final profileLoading = false.obs;
+  final imageUploading = false.obs;
 
   static UserController get instance => Get.find();
 
@@ -50,23 +53,27 @@ class UserController extends GetxController {
 
   Future<void> saveUserRecord(UserCredential? userCredentials) async {
     try {
-      if (userCredentials != null) {
-        final nameParts =
-        UserModel.nameParts(userCredentials.user!.displayName ?? '');
-        final username =
-        UserModel.generateUsername(userCredentials.user!.displayName ?? '');
 
-        //MAP DATA TO FIREBASE
-        final user = UserModel(
-            id: userCredentials.user!.uid,
-            firstName: nameParts[0],
-            lastName: nameParts.length > 1 ? nameParts.sublist(1).join() : '',
-            username: username,
-            email: userCredentials.user!.email ?? '',
-            phoneNumber: userCredentials.user!.phoneNumber ?? '',
-            profilePicture: userCredentials.user!.photoURL ?? '');
+      await fetchUserRecord();
+      if(user.value.id.isEmpty) {
+        if (userCredentials != null) {
+          final nameParts =
+          UserModel.nameParts(userCredentials.user!.displayName ?? '');
+          final username =
+          UserModel.generateUsername(userCredentials.user!.displayName ?? '');
 
-        await userRepository.saveUserRecord(user);
+          //MAP DATA TO FIREBASE
+          final user = UserModel(
+              id: userCredentials.user!.uid,
+              firstName: nameParts[0],
+              lastName: nameParts.length > 1 ? nameParts.sublist(1).join() : '',
+              username: username,
+              email: userCredentials.user!.email ?? '',
+              phoneNumber: userCredentials.user!.phoneNumber ?? '',
+              profilePicture: userCredentials.user!.photoURL ?? '');
+
+          await userRepository.saveUserRecord(user);
+        }
       }
     } catch (e) {
       Loaders.warningSnackBar(
@@ -149,6 +156,30 @@ class UserController extends GetxController {
       FullScreenLoader.stopLoading();
       Loaders.errorSnackBar(
           title: '¡Ocurrio un error!', message: e.toString());
+    }
+  }
+
+  Future<void> uploadUserProfilePicture() async{
+    try{
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 70, maxHeight: 512, maxWidth: 512);
+      if(image != null){
+        imageUploading.value = true;
+        final imageUrl = await userRepository.uploadImage('Usuarios/Imagenes/Perfil/', image);
+
+        Map<String, dynamic> json ={
+          'fotoPerfil': imageUrl
+        };
+        await userRepository.updateSingleField(json);
+
+        user.value.profilePicture = imageUrl;
+        user.refresh();
+        Loaders.successSnackBar(title: 'Exitoso', message: '¡Tu foto de perfil se ha actualizado correctamente!');
+      }
+    }catch(e) {
+      Loaders.errorSnackBar(
+          title: '¡Ocurrio un error!', message: e.toString());
+    }finally{
+      imageUploading.value = false;
     }
   }
 }

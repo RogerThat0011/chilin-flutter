@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/widgets/appbar/appbar.dart';
 import 'package:t_store/common/widgets/images/circular_image.dart';
 import 'package:t_store/common/widgets/texts/section_heading.dart';
@@ -7,8 +8,10 @@ import 'package:t_store/features/personalization/controllers/user_controller.dar
 import 'package:t_store/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/sizes.dart';
+import 'package:t_store/utils/shimmers/ShimmerEffect.dart';
 
 import 'widgets/change_name.dart';
+import 'widgets/change_phone_number.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -32,10 +35,21 @@ class ProfileScreen extends StatelessWidget {
                 child: Column(
                   //PROFILE PICTURE
                   children: [
-                    const CircularImage(
-                        image: TImages.user, width: 80, height: 80),
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image =
+                          networkImage.isNotEmpty ? networkImage : TImages.user;
+                      return controller.imageUploading.value
+                          ? const ShimmerEffect(
+                              width: 80, height: 80, radius: 80)
+                          : CircularImage(
+                              image: image,
+                              width: 80,
+                              height: 80,
+                              isNetworkImage: networkImage.isNotEmpty);
+                    }),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () => controller.uploadUserProfilePicture(),
                         child: const Text('Cambiar Foto de Perfil')),
                   ],
                 ),
@@ -56,6 +70,7 @@ class ProfileScreen extends StatelessWidget {
               ProfileMenu(
                   title: 'Usuario',
                   value: controller.user.value.username,
+                  icon: Iconsax.copy,
                   onPressed: () {}),
 
               const SizedBox(height: TSizes.spaceBtwItems),
@@ -70,20 +85,22 @@ class ProfileScreen extends StatelessWidget {
               ProfileMenu(
                   title: 'ID',
                   value: controller.user.value.id,
+                  icon: Iconsax.copy,
                   onPressed: () {}),
               ProfileMenu(
                   title: 'Correo',
                   value: controller.user.value.email,
+                  icon: Iconsax.copy,
                   onPressed: () {}),
               ProfileMenu(
                   title: 'Teléfono',
                   value: '+503 ${controller.user.value.phoneNumber}',
-                  onPressed: () {}),
-              ProfileMenu(title: 'Genero', value: 'Male', onPressed: () {}),
+                  onPressed: () => Get.to(() => const ChangePhoneNumber())),
+              /*ProfileMenu(title: 'Genero', value: 'Male', onPressed: () {}),
               ProfileMenu(
                   title: 'Fecha de Nacimiento',
                   value: '24 March, 1999',
-                  onPressed: () {}),
+                  onPressed: () {}),*/
 
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),

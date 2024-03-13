@@ -4,6 +4,8 @@ import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/widgets/images/rounded_image.dart';
 import 'package:t_store/common/widgets/products/product_cards/rounded_cointainer.dart';
 import 'package:t_store/common/widgets/texts/product_title_text.dart';
+import 'package:t_store/features/shop/controllers/product_controller.dart';
+import 'package:t_store/features/shop/models/product_model.dart';
 import 'package:t_store/features/shop/screens/product_details/product_detail.dart';
 
 import '../../../../utils/constants/colors.dart';
@@ -16,14 +18,18 @@ import '../../texts/brand_title_text_with_verified_icon.dart';
 import 'product_price_text.dart';
 
 class ProductCardVertical extends StatelessWidget {
-  const ProductCardVertical({super.key});
+  const ProductCardVertical({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
+
+    final controller = ProductController.instance;
     final dark = THelperFunctions.isDarkMode(context);
 
     return GestureDetector(
-      onTap: () => Get.to(() => const ProductDetail()),
+      onTap: () => Get.to(() => ProductDetail(product: product)),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -38,12 +44,12 @@ class ProductCardVertical extends StatelessWidget {
               height: 180,
               padding: const EdgeInsets.all(TSizes.sm),
               backgroundColor: dark ? TColors.dark : TColors.light,
-              child: const Stack(
+              child: Stack(
                 children: [
                   //IMAGE
                   TRoundedImage(
-                      imageUrl: TImages.productPupusas, applyImageRadius: true),
-                  Positioned(
+                      imageUrl: product.image, applyImageRadius: true, isNetworkImage: true),
+                  const Positioned(
                       top: 0,
                       right: 0,
                       child:
@@ -54,14 +60,14 @@ class ProductCardVertical extends StatelessWidget {
 
             const SizedBox(height: TSizes.spaceBtwItems / 2),
             //DETAILS
-            const Padding(
-              padding: EdgeInsets.only(left: TSizes.sm),
+            Padding(
+              padding: const EdgeInsets.only(left: TSizes.sm),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ProductTitleText( title: 'Pupusas de Frijol con Queso',smallSize: true,),
-                    SizedBox(height: TSizes.spaceBtwItems / 2),
-                    BrandtitleWithVerifiedIcon(title: 'Pupusas Tradicionales'),
+                    ProductTitleText( title: product.nombre,smallSize: true,),
+                    const SizedBox(height: TSizes.spaceBtwItems / 2),
+                    const BrandtitleWithVerifiedIcon(title: 'Pupusas Tradicionales'),
                   ]),
             ),
 
@@ -70,9 +76,9 @@ class ProductCardVertical extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: TSizes.sm),
-                  child: ProductPriceText(price: '1.50'),
+                Padding(
+                  padding: const EdgeInsets.only(left: TSizes.sm),
+                  child: ProductPriceText(price: product.precio.toString()),
                 ),
                 Container(
                   decoration: const BoxDecoration(

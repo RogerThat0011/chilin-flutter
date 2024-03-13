@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/common/widgets/products/product_cards/product_card_vertical.dart';
+import 'package:t_store/features/shop/controllers/product_controller.dart';
 import 'package:t_store/features/shop/screens/all_products/all_products.dart';
+import 'package:t_store/utils/shimmers/vertical_product_shimmer.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
@@ -18,6 +20,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -71,7 +74,14 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: TSizes.spaceBtwItems),
 
                   //PRODUCTS
-                  GridLayout(itemCount: 4, itemBuilder: (_, index) => const ProductCardVertical()),
+                  Obx((){
+                    if(controller.isLoading.value) return const VerticalProductShimmer();
+
+                    if(controller.featuredProducts.isEmpty){
+                      return Center(child: Text('No se encontraron productos.',style: Theme.of(context).textTheme.bodyMedium));
+                    }
+                    return GridLayout(itemCount: controller.featuredProducts.length, itemBuilder: (_, index) => ProductCardVertical(product: controller.featuredProducts[index]));
+                  }),
                 ],
               ),
             )
