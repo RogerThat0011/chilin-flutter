@@ -1,7 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/common/widgets/products/product_cards/product_card_vertical.dart';
-import 'package:t_store/features/shop/controllers/product_controller.dart';
+import 'package:t_store/features/shop/controllers/product/product_controller.dart';
 import 'package:t_store/features/shop/screens/all_products/all_products.dart';
 import 'package:t_store/utils/shimmers/vertical_product_shimmer.dart';
 
@@ -70,17 +71,28 @@ class HomeScreen extends StatelessWidget {
                     TImages.bannerChilin3
                   ]),
                   const SizedBox(height: TSizes.spaceBtwSections),
-                  TSectionHeading(title: 'Productos Populares', onPressed: () => Get.to(() => const AllProducts())),
+                  TSectionHeading(
+                      title: 'Productos Populares',
+                      onPressed: () => Get.to(() => AllProducts(
+                            futureMethod: controller.fetchAllFeaturedProducts(),
+                          ))),
                   const SizedBox(height: TSizes.spaceBtwItems),
 
                   //PRODUCTS
-                  Obx((){
-                    if(controller.isLoading.value) return const VerticalProductShimmer();
-
-                    if(controller.featuredProducts.isEmpty){
-                      return Center(child: Text('No se encontraron productos.',style: Theme.of(context).textTheme.bodyMedium));
+                  Obx(() {
+                    if (controller.isLoading.value) {
+                      return const VerticalProductShimmer();
                     }
-                    return GridLayout(itemCount: controller.featuredProducts.length, itemBuilder: (_, index) => ProductCardVertical(product: controller.featuredProducts[index]));
+
+                    if (controller.featuredProducts.isEmpty) {
+                      return Center(
+                          child: Text('No se encontraron productos.',
+                              style: Theme.of(context).textTheme.bodyMedium));
+                    }
+                    return GridLayout(
+                        itemCount: controller.featuredProducts.length,
+                        itemBuilder: (_, index) => ProductCardVertical(
+                            product: controller.featuredProducts[index]));
                   }),
                 ],
               ),

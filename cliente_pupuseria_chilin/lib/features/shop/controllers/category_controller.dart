@@ -1,7 +1,9 @@
 
 import 'package:get/get.dart';
 import 'package:t_store/data/repositories/repositories/categories/category_repository.dart';
+import 'package:t_store/data/repositories/repositories/products/product_repository.dart';
 import 'package:t_store/features/shop/models/category_model.dart';
+import 'package:t_store/features/shop/models/product_model.dart';
 import 'package:t_store/utils/popups/loaders.dart';
 
 class CategoryController extends GetxController{
@@ -38,7 +40,14 @@ class CategoryController extends GetxController{
     }
   }
 
-  //LOAD SELECTED CATEGORY
-
-  //GET CATEGORY OR SUB-CATEGORY
+  //GET PRODUCTS OF A SPECIFIC CATEGORY
+  Future<List<ProductModel>> getCategoryProducts(String categoryId) async{
+    try{
+      final products = await ProductRepository.instance.getProductsForCategory(categoryId: categoryId);
+      return products;
+    }catch(e){
+      Loaders.errorSnackBar(title: '¡Ocurrio un error!', message: e.toString());
+      return [];
+    }
+  }
 }

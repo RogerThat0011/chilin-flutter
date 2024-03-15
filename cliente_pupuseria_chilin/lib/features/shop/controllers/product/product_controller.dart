@@ -34,4 +34,15 @@ class ProductController extends GetxController{
       isLoading.value = false;
     }
   }
+
+  Future<List<ProductModel>> fetchAllFeaturedProducts() async{
+    try{
+      //FETCH PRODUCTS
+      final products = await productRepository.getAllFeaturedProducts();
+      return products;
+    }catch(e){
+      Loaders.errorSnackBar(title: '¡Ocurrio un error!', message: e.toString());
+      return [];
+    }
+  }
 }

@@ -25,7 +25,7 @@ class ProductDetail extends StatelessWidget {
         child: Column(
           children: [
             //SLIDER
-            const ProductImageSlider(),
+            ProductImageSlider(product: product),
             //PRODUCT DETAILS
             Padding(
               padding: const EdgeInsets.only(
@@ -37,11 +37,11 @@ class ProductDetail extends StatelessWidget {
                   //RATING
                   //const RatingAndShare(),
                   //PRICE, TITLE, ETC
-                  const ProductMetaData(),
+                  ProductMetaData(product: product),
 
                   const SizedBox(height: TSizes.spaceBtwSections),
                   //ATTRIBUTES
-                  const ProductAttributes(),
+                  ProductAttributes(product: product),
 
                   const SizedBox(height: TSizes.spaceBtwSections),
                   //CHECKOUT
@@ -52,18 +52,18 @@ class ProductDetail extends StatelessWidget {
                   const SizedBox(height: TSizes.spaceBtwSections),*/
                   //DESCRIPTION
                   const TSectionHeading(
-                      title: 'Descripcion', showActionButton: false),
+                      title: 'Descripción', showActionButton: false),
                   const SizedBox(height: TSizes.spaceBtwItems),
-                  const ReadMoreText(
-                    'Pupusa de frijol con queso, hecha totalmente a mano.',
+                  ReadMoreText(
+                    product.descripcion ?? 'No hay descripción para este producto',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
-                    trimCollapsedText: ' Show more',
-                    trimExpandedText: ' Less',
+                    trimCollapsedText: ' Ver mas',
+                    trimExpandedText: ' Ver menos',
                     moreStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                        const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
                     lessStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                        const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
                   ),
                   //REVIEWS
                   const Divider(),

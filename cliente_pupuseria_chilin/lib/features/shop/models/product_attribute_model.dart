@@ -11,6 +11,8 @@ class ProductAttributeModel {
     };
   }
 
+  static ProductAttributeModel empty() => ProductAttributeModel(nombre: '', values: []);
+
   factory ProductAttributeModel.fromJson(Map<String, dynamic> document){
     final data = document;
 

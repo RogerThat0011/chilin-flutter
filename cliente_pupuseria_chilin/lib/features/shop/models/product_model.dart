@@ -6,6 +6,7 @@ class ProductModel {
   String estado;
   String? descripcion;
   String? idCategoria;
+  String nombreCategoria;
   String image;
   String nombre;
   bool? isFeatured;
@@ -18,19 +19,21 @@ class ProductModel {
       required this.image,
       required this.nombre,
       required this.precio,
+        required this.nombreCategoria,
       this.descripcion,
       this.idCategoria,
       this.isFeatured,
       this.productAttributes});
 
   static ProductModel empty() =>
-      ProductModel(id: '', estado: '', image: '', nombre: '', precio: 0.0);
+      ProductModel(id: '', estado: '', image: '', nombre: '', precio: 0.0, nombreCategoria: '');
 
   toJson() {
     return {
       'estado': estado,
       'descripcion': descripcion,
       'idCategoria': idCategoria,
+      'nombreCategoria': nombreCategoria,
       'imagen': image,
       'nombre': nombre,
       'isFeatured': isFeatured,
@@ -52,9 +55,27 @@ class ProductModel {
         estado: data['estado'],
         image: data['imagen'] ?? '',
         nombre: data['nombre'],
-        precio: data['precio'],
+        precio: double.parse((data['precio'] ?? 0.0).toString()),
         descripcion: data['descripcion'] ?? '',
         idCategoria: data['idCategoria'] ?? '',
+        nombreCategoria: data['nombreCategoria'] ?? '',
+        isFeatured: data['isFeatured'] ?? false,
+        productAttributes: (data['attributosProducto'] as List<dynamic>)
+            .map((e) => ProductAttributeModel.fromJson(e))
+            .toList());
+  }
+
+  factory ProductModel.fromQuerySnapshot(QueryDocumentSnapshot<Object?> document){
+    final data = document.data() as Map<String, dynamic>;
+    return ProductModel(
+        id: document.id,
+        estado: data['estado'],
+        image: data['imagen'] ?? '',
+        nombre: data['nombre'],
+        precio: double.parse((data['precio'] ?? 0.0).toString()),
+        descripcion: data['descripcion'] ?? '',
+        idCategoria: data['idCategoria'] ?? '',
+        nombreCategoria: data['nombreCategoria'] ?? '',
         isFeatured: data['isFeatured'] ?? false,
         productAttributes: (data['attributosProducto'] as List<dynamic>)
             .map((e) => ProductAttributeModel.fromJson(e))

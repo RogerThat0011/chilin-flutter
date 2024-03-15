@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/widgets/images/rounded_image.dart';
+import 'package:t_store/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:t_store/common/widgets/products/product_cards/rounded_cointainer.dart';
 import 'package:t_store/common/widgets/texts/product_title_text.dart';
-import 'package:t_store/features/shop/controllers/product_controller.dart';
+import 'package:t_store/features/shop/controllers/product/product_controller.dart';
 import 'package:t_store/features/shop/models/product_model.dart';
 import 'package:t_store/features/shop/screens/product_details/product_detail.dart';
 
@@ -24,7 +25,6 @@ class ProductCardVertical extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final controller = ProductController.instance;
     final dark = THelperFunctions.isDarkMode(context);
 
@@ -48,12 +48,13 @@ class ProductCardVertical extends StatelessWidget {
                 children: [
                   //IMAGE
                   TRoundedImage(
-                      imageUrl: product.image, applyImageRadius: true, isNetworkImage: true),
-                  const Positioned(
+                      imageUrl: product.image,
+                      applyImageRadius: true,
+                      isNetworkImage: true),
+                  Positioned(
                       top: 0,
                       right: 0,
-                      child:
-                          CircularIcon(icon: Iconsax.heart5, color: Colors.red))
+                      child: FavouriteIcon(productId: product.id))
                 ],
               ),
             ),
@@ -65,9 +66,12 @@ class ProductCardVertical extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ProductTitleText( title: product.nombre,smallSize: true,),
+                    ProductTitleText(
+                      title: product.nombre,
+                      smallSize: true,
+                    ),
                     const SizedBox(height: TSizes.spaceBtwItems / 2),
-                    const BrandtitleWithVerifiedIcon(title: 'Pupusas Tradicionales'),
+                    BrandtitleWithVerifiedIcon(title: product.nombreCategoria),
                   ]),
             ),
 
