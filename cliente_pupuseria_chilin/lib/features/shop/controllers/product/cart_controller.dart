@@ -1,3 +1,5 @@
+
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:t_store/features/shop/controllers/product/variation_controller.dart';
 import 'package:t_store/features/shop/models/cart_item_model.dart';
@@ -37,22 +39,41 @@ class CartController extends GetxController {
     String productId = product.id;
     Map<dynamic, dynamic>? attributes = variationController.selectedAttributes[productId];
 
-    // Crea un nuevo objeto CartItemModel
-    final selectedCartItem = convertToCartItem(
-      product,
-      productQuantityInCart.value,
-      attributes,
-    );
+    // Busca un elemento similar en el carrito
+    CartItemModel? existingItem = cartItems.firstWhereOrNull(
+            (item) => item.productId == productId && _attributesEqual(item.selectedAttribute, attributes));
 
-    // Agrega los atributos seleccionados al producto específico en el carrito
-    variationController.selectedAttributes.remove(productId);
+    if (existingItem != null) {
+      // Si el elemento ya existe, simplemente actualiza la cantidad
+      existingItem.quantity += productQuantityInCart.value;
+    } else {
+      // Crea un nuevo objeto CartItemModel
+      final selectedCartItem = convertToCartItem(
+        product,
+        productQuantityInCart.value,
+        attributes,
+      );
 
-    // Agrega el producto al carrito
-    cartItems.add(selectedCartItem);
+      // Agrega los atributos seleccionados al producto específico en el carrito
+      variationController.selectedAttributes.remove(productId);
+
+      // Agrega el producto al carrito
+      cartItems.add(selectedCartItem);
+    }
 
     // Actualiza el carrito
     updateCart();
     Loaders.customToast(message: '¡El producto ha sido agregado a tu carrito!');
+  }
+
+  bool _attributesEqual(Map<dynamic, dynamic>? attributes1, Map<dynamic, dynamic>? attributes2) {
+    if (attributes1 == null && attributes2 == null) {
+      return true;
+    }
+    if (attributes1 == null || attributes2 == null) {
+      return false;
+    }
+    return attributes1.toString() == attributes2.toString();
   }
 
   void addOneToCart(CartItemModel item) {
