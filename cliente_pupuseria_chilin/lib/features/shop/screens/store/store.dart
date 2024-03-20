@@ -14,8 +14,8 @@ class Store extends StatelessWidget {
           appBar: TAppBar(
             title: Text('Tienda',
                 style: Theme.of(context).textTheme.headlineMedium),
-            actions: [
-              TCartCounterIcon(onPressed: () {}),
+            actions: const [
+              TCartCounterIcon(),
             ],
           ),
           body: const AllBrandsScreen()),

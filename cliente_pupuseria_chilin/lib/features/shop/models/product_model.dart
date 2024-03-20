@@ -11,6 +11,7 @@ class ProductModel {
   String nombre;
   bool? isFeatured;
   double precio;
+  String productType;
   List<ProductAttributeModel>? productAttributes;
 
   ProductModel(
@@ -19,14 +20,21 @@ class ProductModel {
       required this.image,
       required this.nombre,
       required this.precio,
-        required this.nombreCategoria,
+      required this.nombreCategoria,
+      required this.productType,
       this.descripcion,
       this.idCategoria,
       this.isFeatured,
       this.productAttributes});
 
-  static ProductModel empty() =>
-      ProductModel(id: '', estado: '', image: '', nombre: '', precio: 0.0, nombreCategoria: '');
+  static ProductModel empty() => ProductModel(
+      id: '',
+      estado: '',
+      image: '',
+      nombre: '',
+      precio: 0.0,
+      nombreCategoria: '',
+      productType: '');
 
   toJson() {
     return {
@@ -38,6 +46,7 @@ class ProductModel {
       'nombre': nombre,
       'isFeatured': isFeatured,
       'precio': precio,
+      'tipoProducto': productType,
       'attributosProducto': productAttributes != null
           ? productAttributes!.map((e) => e.toJson()).toList()
           : []
@@ -46,39 +55,57 @@ class ProductModel {
 
   factory ProductModel.fromSnapshot(
       DocumentSnapshot<Map<String, dynamic>> document) {
-
-    if(document.data() == null) return ProductModel.empty();
+    if (document.data() == null) return ProductModel.empty();
 
     final data = document.data()!;
+    final productAttributesData = data['attributosProducto'];
+    List<ProductAttributeModel>? productAttributes;
+
+    if (productAttributesData != null) {
+      productAttributes = (productAttributesData as List<dynamic>)
+          .map((e) => ProductAttributeModel.fromJson(e))
+          .toList();
+    }
+
     return ProductModel(
-        id: document.id,
-        estado: data['estado'],
-        image: data['imagen'] ?? '',
-        nombre: data['nombre'],
-        precio: double.parse((data['precio'] ?? 0.0).toString()),
-        descripcion: data['descripcion'] ?? '',
-        idCategoria: data['idCategoria'] ?? '',
-        nombreCategoria: data['nombreCategoria'] ?? '',
-        isFeatured: data['isFeatured'] ?? false,
-        productAttributes: (data['attributosProducto'] as List<dynamic>)
-            .map((e) => ProductAttributeModel.fromJson(e))
-            .toList());
+      id: document.id,
+      estado: data['estado'],
+      image: data['imagen'] ?? '',
+      nombre: data['nombre'],
+      precio: double.parse((data['precio'] ?? 0.0).toString()),
+      descripcion: data['descripcion'] ?? '',
+      idCategoria: data['idCategoria'] ?? '',
+      nombreCategoria: data['nombreCategoria'] ?? '',
+      isFeatured: data['isFeatured'] ?? false,
+      productType: data['tipoProducto'] ?? '',
+      productAttributes: productAttributes,
+    );
   }
 
-  factory ProductModel.fromQuerySnapshot(QueryDocumentSnapshot<Object?> document){
+  factory ProductModel.fromQuerySnapshot(
+      QueryDocumentSnapshot<Object?> document) {
     final data = document.data() as Map<String, dynamic>;
+    final productAttributesData = data['attributosProducto'];
+    List<ProductAttributeModel>? productAttributes;
+
+    if (productAttributesData != null) {
+      productAttributes = (productAttributesData as List<dynamic>)
+          .map((e) => ProductAttributeModel.fromJson(e))
+          .toList();
+    }
+
     return ProductModel(
-        id: document.id,
-        estado: data['estado'],
-        image: data['imagen'] ?? '',
-        nombre: data['nombre'],
-        precio: double.parse((data['precio'] ?? 0.0).toString()),
-        descripcion: data['descripcion'] ?? '',
-        idCategoria: data['idCategoria'] ?? '',
-        nombreCategoria: data['nombreCategoria'] ?? '',
-        isFeatured: data['isFeatured'] ?? false,
-        productAttributes: (data['attributosProducto'] as List<dynamic>)
-            .map((e) => ProductAttributeModel.fromJson(e))
-            .toList());
+      id: document.id,
+      estado: data['estado'],
+      image: data['imagen'] ?? '',
+      nombre: data['nombre'],
+      precio: double.parse((data['precio'] ?? 0.0).toString()),
+      descripcion: data['descripcion'] ?? '',
+      idCategoria: data['idCategoria'] ?? '',
+      nombreCategoria: data['nombreCategoria'] ?? '',
+      isFeatured: data['isFeatured'] ?? false,
+      productType: data['tipoProducto'] ?? '',
+      productAttributes: productAttributes,
+    );
   }
 }

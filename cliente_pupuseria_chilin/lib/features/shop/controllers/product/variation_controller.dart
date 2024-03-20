@@ -4,11 +4,16 @@ import 'package:t_store/features/shop/models/product_attribute_model.dart';
 class VariationController extends GetxController {
   static VariationController get instance => Get.find();
 
-  Rx<ProductAttributeModel> selectedVariation = ProductAttributeModel.empty().obs;
+  RxMap<String, Map<dynamic, dynamic>> selectedAttributes = <String, Map<dynamic, dynamic>>{}.obs;
 
-  RxMap selectedAttributes = {}.obs;
+  void selectAttribute(String productId, String? attributeName, dynamic attributeValue) {
+    if (!selectedAttributes.containsKey(productId)) {
+      selectedAttributes[productId] = {};
+    }
+    selectedAttributes[productId]![attributeName] = attributeValue;
+  }
 
-  void selectAttribute(String? attributeName, dynamic attributeValue) {
-    selectedAttributes[attributeName] = attributeValue;
+  void resetSelectedAttributes(String productId) {
+    selectedAttributes.remove(productId);
   }
 }

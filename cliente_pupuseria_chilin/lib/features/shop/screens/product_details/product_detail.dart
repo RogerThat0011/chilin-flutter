@@ -20,7 +20,7 @@ class ProductDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
     return Scaffold(
-      bottomNavigationBar: const BottomAddToCart(),
+      bottomNavigationBar: BottomAddToCart(product: product),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -39,17 +39,19 @@ class ProductDetail extends StatelessWidget {
                   //PRICE, TITLE, ETC
                   ProductMetaData(product: product),
 
-                  const SizedBox(height: TSizes.spaceBtwSections),
+                  product.productAttributes != null ? const SizedBox(height: TSizes.spaceBtwSections) : const SizedBox.shrink(),
                   //ATTRIBUTES
-                  ProductAttributes(product: product),
+                  product.productAttributes != null ? ProductAttributes(product: product) : const SizedBox.shrink(),
 
                   const SizedBox(height: TSizes.spaceBtwSections),
+
                   //CHECKOUT
                   /*SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
                           onPressed: () {}, child: const Text('Verificar'))),
                   const SizedBox(height: TSizes.spaceBtwSections),*/
+
                   //DESCRIPTION
                   const TSectionHeading(
                       title: 'Descripción', showActionButton: false),

@@ -7,6 +7,7 @@ import 'package:t_store/common/widgets/products/product_cards/rounded_cointainer
 import 'package:t_store/common/widgets/texts/product_title_text.dart';
 import 'package:t_store/features/shop/controllers/product/product_controller.dart';
 import 'package:t_store/features/shop/models/product_model.dart';
+import 'package:t_store/features/shop/screens/home/widgets/add_to_cart_button.dart';
 import 'package:t_store/features/shop/screens/product_details/product_detail.dart';
 
 import '../../../../utils/constants/colors.dart';
@@ -25,7 +26,6 @@ class ProductCardVertical extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = ProductController.instance;
     final dark = THelperFunctions.isDarkMode(context);
 
     return GestureDetector(
@@ -84,19 +84,7 @@ class ProductCardVertical extends StatelessWidget {
                   padding: const EdgeInsets.only(left: TSizes.sm),
                   child: ProductPriceText(price: product.precio.toString()),
                 ),
-                Container(
-                  decoration: const BoxDecoration(
-                      color: TColors.dark,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(TSizes.cardRadiusMd),
-                          bottomRight:
-                              Radius.circular(TSizes.productImageRadius))),
-                  child: const SizedBox(
-                      width: TSizes.iconLg * 1.2,
-                      height: TSizes.iconLg * 1.2,
-                      child: Center(
-                          child: Icon(Iconsax.add, color: TColors.white))),
-                )
+                ProductCardAddToCartButton(product: product),
               ],
             )
           ],

@@ -30,19 +30,24 @@ class ProductAttributes extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwItems / 2),
               Obx(() => Wrap(
                 spacing: 8,
-                children: attribute.values!
-                    .map((tipo) {
-                  final isSelected =
-                      controller.selectedAttributes[attribute.nombre] == tipo;
+                children: attribute.values!.map((tipo) {
+                  final isSelected = controller.selectedAttributes[product.id]?.containsKey(attribute.nombre) == true &&
+                      controller.selectedAttributes[product.id]![attribute.nombre] == tipo;
                   return ChoiceChipProduct(
                     text: tipo,
                     selected: isSelected,
                     onSelected: (value) {
-                      controller.selectAttribute(attribute.nombre, tipo);
+                      if (isSelected) {
+                        // Si ya está seleccionado, deselecciona este atributo
+                        controller.resetSelectedAttributes(product.id);
+                      } else {
+                        // Si no está seleccionado, selecciona solo este atributo
+                        controller.resetSelectedAttributes(product.id);
+                        controller.selectAttribute(product.id, attribute.nombre, tipo);
+                      }
                     },
                   );
-                })
-                    .toList(),
+                }).toList(),
               )),
             ],
           ))
