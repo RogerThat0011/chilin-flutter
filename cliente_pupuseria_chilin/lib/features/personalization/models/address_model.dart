@@ -50,8 +50,11 @@ class AddressModel {
   }
 
   factory AddressModel.fromMap(Map<String, dynamic> data){
+
+    String id = data['id'] as String? ?? '';
+
     return AddressModel(
-        id: data['id'] as String,
+        id: id,
         name: data['nombre'] as String,
         phoneNumber: data['numeroTelefono'] as String,
         street: data['calle'] as String,
