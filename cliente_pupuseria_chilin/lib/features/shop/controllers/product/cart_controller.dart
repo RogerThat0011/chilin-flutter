@@ -77,8 +77,10 @@ class CartController extends GetxController {
   }
 
   void addOneToCart(CartItemModel item) {
-    int index = cartItems
-        .indexWhere((cartItem) => cartItem.productId == item.productId);
+    final index = cartItems.indexWhere((cartItem) =>
+    cartItem.productId == item.productId &&
+        _attributesEqual(cartItem.selectedAttribute, item.selectedAttribute));
+
     if (index >= 0) {
       cartItems[index].quantity += 1;
     } else {
@@ -88,15 +90,15 @@ class CartController extends GetxController {
   }
 
   void removeOneFromCart(CartItemModel item) {
-    int index = cartItems
-        .indexWhere((cartItem) => cartItem.productId == item.productId);
+    final index = cartItems.indexWhere((cartItem) =>
+    cartItem.productId == item.productId &&
+        _attributesEqual(cartItem.selectedAttribute, item.selectedAttribute));
+
     if (index >= 0) {
       if (cartItems[index].quantity > 1) {
         cartItems[index].quantity -= 1;
       } else {
-        cartItems[index].quantity == 1
-            ? removeFromCartDialog(index)
-            : cartItems.removeAt(index);
+        removeFromCartDialog(index);
       }
     }
     updateCart();
