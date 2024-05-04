@@ -2,22 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/common/widgets/appbar/appbar.dart';
 import 'package:t_store/common/widgets/products/product_cards/rounded_cointainer.dart';
-import 'package:t_store/common/widgets/success_screen/succes_screen.dart';
+import 'package:t_store/features/shop/controllers/product/cart_controller.dart';
+import 'package:t_store/features/shop/controllers/product/order_controller.dart';
 import 'package:t_store/features/shop/screens/cart/widgets/cart_items.dart';
 import 'package:t_store/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:t_store/features/shop/screens/checkout/widgets/billing_amount_section.dart';
 import 'package:t_store/features/shop/screens/checkout/widgets/billing_payment_section.dart';
-import 'package:t_store/navigation_menu.dart';
 import 'package:t_store/utils/constants/colors.dart';
-import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/helpers/helper_functions.dart';
+import 'package:t_store/utils/helpers/pricing_calculator.dart';
+import 'package:t_store/utils/popups/loaders.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final cartController = CartController.instance;
+    final subtotal = cartController.totalCartPrice.value;
+    final orderController = Get.put(OrderController());
+    final totalAmount = TPricingCalculator.calculateTotalPrice(subtotal, 'US');
     final dark = THelperFunctions.isDarkMode(context);
 
     return Scaffold(
@@ -67,13 +72,11 @@ class CheckoutScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: ElevatedButton(
-          onPressed: () => Get.to(() => SuccessScreen(
-                image: TImages.ordenExitosa,
-                title: '¡Orden realizada con exito!',
-                subTitle: 'Pronto te notificaremos cuando tu pedido este listo para retirarlo en la pupuseria.',
-                onPressed: () => Get.offAll(() => const NavigationMenu()),
-              )),
-          child: const Text('Confirmar Orden \$8.50'),
+          onPressed: subtotal > 0 ?
+          () => orderController.processOrder(totalAmount)
+          : () => Loaders.warningSnackBar(title: '¡El carrito está vacío!', message: 'Agrega productos al carrito para proceder.'),
+          child: Text(
+              'Confirmar Orden \$$totalAmount'),
         ),
       ),
     );

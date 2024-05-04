@@ -6,8 +6,10 @@ import 'package:t_store/common/widgets/custom_shapes/containers/primary_header_c
 import 'package:t_store/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:t_store/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:t_store/common/widgets/texts/section_heading.dart';
+import 'package:t_store/data/repositories/repositories/authentication/authentication_repository.dart';
 import 'package:t_store/features/personalization/screens/address/address.dart';
 import 'package:t_store/features/personalization/screens/profile/profile.dart';
+import 'package:t_store/features/shop/screens/cart/widgets/cart.dart';
 import 'package:t_store/features/shop/screens/order/order.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
@@ -17,6 +19,9 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final controller = Get.put(AuthenticationRepository());
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -58,7 +63,7 @@ class SettingScreen extends StatelessWidget {
                     icon: Iconsax.shopping_cart,
                     title: 'Mi Carrito',
                     subTitle: 'Agregar o Eliminar Productos para Pedidos',
-                    onTap: () {},
+                    onTap: () => Get.to(() => const CartScreen()),
                   ),
                   SettingsMenuTile(
                     icon: Iconsax.bag_tick,
@@ -122,7 +127,7 @@ class SettingScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                        onPressed: () {}, child: const Text('Cerrar Sesión')),
+                        onPressed: () => controller.logout(), child: const Text('Cerrar Sesión')),
                   ),
                   const SizedBox(height: TSizes.spaceBtwSections * 2.5)
                 ],

@@ -1,15 +1,23 @@
 
 class TValidator {
+
+  static String? validateEmtpyText(String? fieldName, String? value){
+    if(value == null || value.isEmpty){
+      return '$fieldName es requerido.';
+    }
+    return null;
+  }
+
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Email is required.';
+      return 'Email es requerido.';
     }
 
     // Regular expression for email validation
     final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
 
     if (!emailRegExp.hasMatch(value)) {
-      return 'Invalid email address.';
+      return 'Email invalido.';
     }
 
     return null;
@@ -17,27 +25,27 @@ class TValidator {
 
   static String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Password is required.';
+      return 'Contraseña es requerida.';
     }
 
     // Check for minimum password length
     if (value.length < 6) {
-      return 'Password must be at least 6 characters long.';
+      return 'La contraseña debe tener al menos 6 caracteres.';
     }
 
     // Check for uppercase letters
     if (!value.contains(RegExp(r'[A-Z]'))) {
-      return 'Password must contain at least one uppercase letter.';
+      return 'La contraseña debe tener al menos una mayuscula.';
     }
 
     // Check for numbers
     if (!value.contains(RegExp(r'[0-9]'))) {
-      return 'Password must contain at least one number.';
+      return 'La contraseña debe tener al menos un digito.';
     }
 
     // Check for special characters
     if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
-      return 'Password must contain at least one special character.';
+      return 'La contraseña debe tener al menos un caracter especial.';
     }
 
     return null;
@@ -45,14 +53,14 @@ class TValidator {
 
   static String? validatePhoneNumber(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Phone number is required.';
+      return 'Numero de telefono es requerido';
     }
 
     // Regular expression for phone number validation (assuming a 10-digit US phone number format)
-    final phoneRegExp = RegExp(r'^\d{10}$');
+    final phoneRegExp = RegExp(r'^\d{8}$');
 
     if (!phoneRegExp.hasMatch(value)) {
-      return 'Invalid phone number format (10 digits required).';
+      return 'Numero de telefono invalido (8 digitos son requeridos).';
     }
 
     return null;

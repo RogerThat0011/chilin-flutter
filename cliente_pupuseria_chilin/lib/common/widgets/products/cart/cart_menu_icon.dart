@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:t_store/features/shop/controllers/product/cart_controller.dart';
 import 'package:t_store/features/shop/screens/cart/widgets/cart.dart';
 import 'package:t_store/utils/helpers/helper_functions.dart';
 
@@ -9,17 +10,16 @@ import '../../../../utils/constants/colors.dart';
 class TCartCounterIcon extends StatelessWidget {
   const TCartCounterIcon({
     super.key,
-    required this.onPressed,
     this.iconColor,
     this.counterBgColor,
     this.couterTextColor,
   });
 
-  final VoidCallback onPressed;
   final Color? iconColor, counterBgColor, couterTextColor;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(CartController());
 
     final dark = THelperFunctions.isDarkMode(context);
 
@@ -32,6 +32,7 @@ class TCartCounterIcon extends StatelessWidget {
               color: iconColor,
             )),
         Positioned(
+          top: 5,
           right: 0,
           child: Container(
             width: 18,
@@ -41,12 +42,14 @@ class TCartCounterIcon extends StatelessWidget {
               borderRadius: BorderRadius.circular(100),
             ),
             child: Center(
-              child: Text(
-                '2',
-                style: Theme.of(context)
-                    .textTheme
-                    .labelLarge!
-                    .apply(color: TColors.white, fontSizeFactor: 0.8),
+              child: Obx(
+                () => Text(
+                  controller.noOfCartItems.value.toString(),
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelLarge!
+                      .apply(color: TColors.white, fontSizeFactor: 0.8),
+                ),
               ),
             ),
           ),

@@ -1,117 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common/widgets/chips/choice_chip.dart';
 import 'package:t_store/common/widgets/texts/section_heading.dart';
+import 'package:t_store/features/shop/controllers/product/variation_controller.dart';
+import 'package:t_store/features/shop/models/product_model.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/helpers/helper_functions.dart';
 
 class ProductAttributes extends StatelessWidget {
-  const ProductAttributes({super.key});
+  const ProductAttributes({Key? key, required this.product}) : super(key: key);
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunctions.isDarkMode(context);
-
+    final controller = Get.put(VariationController());
     return Column(
       children: [
-        /*RoundedContainer(
-          padding: const EdgeInsets.all(TSizes.md),
-          backgroundColor: dark ? TColors.darkerGrey : TColors.grey,
-          child: Column(
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: product.productAttributes!
+              .map((attribute) => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  const TSectionHeading(
-                    title: 'Variation',
-                    showActionButton: false,
-                  ),
-                  const SizedBox(width: TSizes.spaceBtwItems),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          const ProductTitleText(
-                              title: 'Price : ', smallSize: true),
-                          Text(
-                            '\$25',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleSmall!
-                                .apply(decoration: TextDecoration.lineThrough),
-                          ),
-
-                          const SizedBox(width: TSizes.spaceBtwItems),
-
-                          //SALE PRICE
-                          const ProductTitleText(title: '20')
-                        ],
-                      ),
-                      //STOCK
-                      Row(
-                        children: [
-                          const ProductTitleText(
-                              title: 'Stock : ', smallSize: true),
-                          Text('In Stock',
-                              style: Theme.of(context).textTheme.titleMedium)
-                        ],
-                      ),
-                      //VARIATION DESCRIPTION
-                      const ProductTitleText(
-                          title: 'Basic Description of the product',
-                          smallSize: true,
-                          maxLines: 4),
-                    ],
-                  ),
-                ],
-              )
+              TSectionHeading(
+                title: attribute.nombre ?? '',
+                showActionButton: false,
+              ),
+              const SizedBox(height: TSizes.spaceBtwItems / 2),
+              Obx(() => Wrap(
+                spacing: 8,
+                children: attribute.values!.map((tipo) {
+                  final isSelected = controller.selectedAttributes[product.id]?.containsKey(attribute.nombre) == true &&
+                      controller.selectedAttributes[product.id]![attribute.nombre] == tipo;
+                  return ChoiceChipProduct(
+                    text: tipo,
+                    selected: isSelected,
+                    onSelected: (value) {
+                      if (isSelected) {
+                        // Si ya está seleccionado, deselecciona este atributo
+                        controller.resetSelectedAttributes(product.id);
+                      } else {
+                        // Si no está seleccionado, selecciona solo este atributo
+                        controller.resetSelectedAttributes(product.id);
+                        controller.selectAttribute(product.id, attribute.nombre, tipo);
+                      }
+                    },
+                  );
+                }).toList(),
+              )),
             ],
-          ),
+          ))
+              .toList(),
         ),
-
-        const SizedBox(height: TSizes.spaceBtwItems),
-
-        //ATTRIBUTES
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const TSectionHeading(
-              title: 'Colors',
-              showActionButton: false,
-            ),
-            const SizedBox(height: TSizes.spaceBtwItems / 2),
-            Wrap(
-              spacing: 8,
-              children: [
-                ChoiceChipProduct(
-                    text: 'Green', selected: true, onSelected: (value) {}),
-                ChoiceChipProduct(
-                    text: 'Blue', selected: true, onSelected: (value) {}),
-                ChoiceChipProduct(
-                    text: 'Yellow', selected: true, onSelected: (value) {}),
-              ],
-            )
-          ],
-        ),*/
-
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const TSectionHeading(
-              title: 'Tipo de Masa',
-              showActionButton: false,
-            ),
-            const SizedBox(height: TSizes.spaceBtwItems / 2),
-            Wrap(
-              spacing: 8,
-              children: [
-                ChoiceChipProduct(
-                    text: 'Arroz', selected: true, onSelected: (value) {}),
-                ChoiceChipProduct(
-                    text: 'Maiz', selected: true, onSelected: (value) {})
-              ],
-            )
-          ],
-        )
       ],
     );
   }

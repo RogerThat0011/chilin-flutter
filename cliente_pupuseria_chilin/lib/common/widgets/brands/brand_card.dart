@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:t_store/features/shop/models/category_model.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/enums.dart';
@@ -13,9 +14,11 @@ class BrandCard extends StatelessWidget {
   const BrandCard({
     super.key,
     required this.showBorder,
-    this.onTap,
+    this.onTap, required this.category, this.numberProducts,
   });
 
+  final int? numberProducts;
+  final CategoryModel category;
   final bool showBorder;
   final void Function()? onTap;
 
@@ -32,8 +35,8 @@ class BrandCard extends StatelessWidget {
             //ICON
             Flexible(
               child: CircularImage(
-                isNetworkImage: false,
-                image: TImages.pupusaIcon,
+                isNetworkImage: true,
+                image: category.image,
                 backgroundColor: Colors.transparent,
                 overlayColor: THelperFunctions.isDarkMode(context)
                     ? TColors.white
@@ -48,10 +51,10 @@ class BrandCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const BrandtitleWithVerifiedIcon(
-                      title: 'Pupusas Tradicionales', brandTextSize: TextSizes.large),
+                  BrandtitleWithVerifiedIcon(
+                      title: category.name, brandTextSize: TextSizes.large),
                   Text(
-                    '10 products',
+                    '${numberProducts ?? 0} productos',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium,
                   )

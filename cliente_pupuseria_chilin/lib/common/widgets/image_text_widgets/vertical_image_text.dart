@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:t_store/common/widgets/images/circular_image.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
@@ -12,12 +13,14 @@ class TVerticalImageText extends StatelessWidget {
     this.textColor = TColors.white,
     this.backgroundColor = TColors.white,
     this.onTap,
+    this.isNetworkImage = true,
   });
 
   final String image, title;
   final Color textColor;
   final Color? backgroundColor;
   final void Function()? onTap;
+  final bool isNetworkImage;
 
   @override
   Widget build(BuildContext context) {
@@ -27,35 +30,29 @@ class TVerticalImageText extends StatelessWidget {
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.only(right: TSizes.spaceBtwItems),
-        child: Column(
-          children: [
-            Container(
-              width: 56,
-              height: 56,
-              padding: const EdgeInsets.all(TSizes.md),
-              decoration: BoxDecoration(
-                color:
-                    backgroundColor ?? (dark ? TColors.black : TColors.white),
-                borderRadius: BorderRadius.circular(100),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              CircularImage(
+                image: image,
+                fit: BoxFit.fitWidth,
+                padding: TSizes.sm * 1.4,
+                isNetworkImage: isNetworkImage,
+                backgroundColor: backgroundColor,
+                overlayColor: dark ? TColors.light : TColors.dark,
               ),
-              child: Center(
-                child: Image(
-                    image: AssetImage(image),
-                    fit: BoxFit.cover,
-                    color: dark ? TColors.white : TColors.dark),
-              ),
-            ),
-            const SizedBox(height: TSizes.spaceBtwItems / 2),
-            SizedBox(
-                width: 55,
-                child: Text(title,
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelMedium!
-                        .apply(color: textColor),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis)),
-          ],
+              const SizedBox(height: TSizes.spaceBtwItems / 2),
+              SizedBox(
+                  width: 55,
+                  child: Text(title,
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelMedium!
+                          .apply(color: textColor),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis)),
+            ],
+          ),
         ),
       ),
     );
