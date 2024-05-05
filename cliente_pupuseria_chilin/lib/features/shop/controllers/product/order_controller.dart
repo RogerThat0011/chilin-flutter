@@ -55,10 +55,11 @@ class OrderController extends GetxController {
       cartController.clearCart();
 
       Get.off(() => SuccessScreen(
-            image: TImages.successImageWhenAllIsOk,
+            animation: TImages.paymentSuccesfulAnimation,
             title: '¡Orden realizada con exito!',
             subTitle:
                 'Pronto te notificaremos cuando tu pedido este listo para retirarlo en la pupuseria.',
+          sizeAnimation: 0.8,
             onPressed: () => Get.offAll(() => const NavigationMenu()),
           ));
 

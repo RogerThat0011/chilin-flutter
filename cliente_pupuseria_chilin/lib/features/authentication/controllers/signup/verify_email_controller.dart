@@ -37,9 +37,10 @@ class VerifyEmailController extends GetxController {
         timer.cancel();
         Get.off(
           () => SuccessScreen(
-              image: TImages.succesfullyRegisterAnimation,
+              animation: TImages.succesfullyRegisterAnimation,
               title: TTexts.yourAccountCreatedTitle,
               subTitle: TTexts.yourAccountCreatedSubTitle,
+              sizeAnimation: 0.4,
               onPressed: () =>
                   AuthenticationRepository.instance.screenRedirect()),
         );
@@ -47,14 +48,15 @@ class VerifyEmailController extends GetxController {
     });
   }
 
-  checkEmailVerificationStatus() async{
+  checkEmailVerificationStatus() async {
     final currentUser = FirebaseAuth.instance.currentUser;
-    if(currentUser != null && currentUser.emailVerified){
+    if (currentUser != null && currentUser.emailVerified) {
       Get.off(
-            () => SuccessScreen(
-            image: TImages.chilinLogoLight,
+        () => SuccessScreen(
+            animation: TImages.chilinLogoLight,
             title: TTexts.yourAccountCreatedTitle,
             subTitle: TTexts.yourAccountCreatedSubTitle,
+            sizeAnimation: 0.4,
             onPressed: () =>
                 AuthenticationRepository.instance.screenRedirect()),
       );
