@@ -55,7 +55,7 @@ class OrderController extends GetxController {
       cartController.clearCart();
 
       Get.off(() => SuccessScreen(
-            image: TImages.orderCompletedAnimation,
+            image: TImages.successImageWhenAllIsOk,
             title: '¡Orden realizada con exito!',
             subTitle:
                 'Pronto te notificaremos cuando tu pedido este listo para retirarlo en la pupuseria.',

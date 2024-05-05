@@ -39,10 +39,10 @@ class FavoriteScreen extends StatelessWidget {
                 () => FutureBuilder(
                     future: controller.favouriteProducts(),
                     builder: (context, snapshot) {
-
                       final emptyWidget = AnimationLoaderWidget(
                         text: '¡No has agregado nada a tus favoritos!',
                         animation: TImages.pencilAnimation,
+                        sizeAnimation: 0.8,
                         onActionPressed: () =>
                             Get.to(() => const NavigationMenu()),
                       );

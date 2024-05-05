@@ -24,12 +24,16 @@ class SuccessScreen extends StatelessWidget {
           child: Column(
             children: [
               //IMAGE
+              const SizedBox(height: TSizes.spaceBtwItems),
               Padding(
-                padding: const EdgeInsets.only(left: 45),
+                padding: const EdgeInsets.only(left: 0),
                 child: Image(
                     image: AssetImage(image),
-                    width: 190),
+                    width: 150,
+
+                    ),
               ),
+              const SizedBox(height: TSizes.spaceBtwItems),
               const SizedBox(height: TSizes.spaceBtwItems),
 
               //TITLE AND SUBTITLE

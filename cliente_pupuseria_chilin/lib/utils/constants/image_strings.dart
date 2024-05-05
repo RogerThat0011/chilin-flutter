@@ -11,6 +11,8 @@ class TImages {
   static const String chilinLogoLight = "assets/logos/logo-dark.png";
   static const String chilinLogoDark = "assets/logos/logo-light.png";
 
+  //success image for solving bug in animations
+  static const String successImageWhenAllIsOk  = "assets/logos/success-icon.png";
   // -- Social Logos
   static const String google = "assets/logos/google-icon.png";
   static const String facebook = "assets/logos/facebook-icon.png";
@@ -66,6 +68,8 @@ class TImages {
   static String loadingJuggleAnimation = "assets/images/animations/141397-loading-juggle.json";
   static String cloudUploadingAnimation = "assets/images/animations/cloud-uploading-animation.json";
   static String loaderAnimation = "assets/images/animations/loader-animation.json";
+  static String newCartAnimation = "assets/images/animations/cartAnimation.json";
+
 
   // -- OnBoarding Texts
   static const String onBoardingImage1 = "assets/images/on_boarding_images/sammy-line-searching.gif";

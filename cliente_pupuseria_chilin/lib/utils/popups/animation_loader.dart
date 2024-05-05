@@ -4,13 +4,14 @@ import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
 class AnimationLoaderWidget extends StatelessWidget {
-  const AnimationLoaderWidget({super.key, required this.text, required this.animation, this.showAction = false, this.actionText, this.onActionPressed});
+   AnimationLoaderWidget({super.key, required this.text, required this.animation, required this.sizeAnimation, this.showAction = false, this.actionText, this.onActionPressed});
 
   final String text;
   final String animation;
   final bool showAction;
   final String? actionText;
   final VoidCallback? onActionPressed;
+  double sizeAnimation = 0.2;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,8 @@ class AnimationLoaderWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Lottie.asset(animation, width: MediaQuery.of(context).size.width * 0.8),
+          Lottie.asset(animation,
+              width: MediaQuery.of(context).size.width * sizeAnimation),
           const SizedBox(height: TSizes.defaultSpace),
           Text(
             text,
@@ -26,17 +28,23 @@ class AnimationLoaderWidget extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: TSizes.defaultSpace),
-          showAction ? SizedBox(
-            width: 250,
-              child: OutlinedButton(
-                onPressed: onActionPressed,
-                style: OutlinedButton.styleFrom(backgroundColor: TColors.dark),
-                child: Text(
-                  actionText!,
-                  style: Theme.of(context).textTheme.bodyMedium!.apply(color: TColors.light),
-                ),
-              ),
-          ) : const SizedBox()
+          showAction
+              ? SizedBox(
+                  width: 150,
+                  child: OutlinedButton(
+                    onPressed: onActionPressed,
+                    style:
+                        OutlinedButton.styleFrom(backgroundColor: TColors.dark),
+                    child: Text(
+                      actionText!,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .apply(color: TColors.light),
+                    ),
+                  ),
+                )
+              : const SizedBox()
         ],
       ),
     );

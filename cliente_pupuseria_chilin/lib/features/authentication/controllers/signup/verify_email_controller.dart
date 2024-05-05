@@ -52,7 +52,7 @@ class VerifyEmailController extends GetxController {
     if(currentUser != null && currentUser.emailVerified){
       Get.off(
             () => SuccessScreen(
-            image: TImages.chilinLogoDark,
+            image: TImages.chilinLogoLight,
             title: TTexts.yourAccountCreatedTitle,
             subTitle: TTexts.yourAccountCreatedSubTitle,
             onPressed: () =>
