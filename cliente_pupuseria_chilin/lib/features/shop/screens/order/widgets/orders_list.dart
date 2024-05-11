@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/widgets/products/product_cards/rounded_cointainer.dart';
+import 'package:t_store/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:t_store/features/shop/controllers/product/order_controller.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
@@ -9,6 +10,8 @@ import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/helpers/cloud_helper_functions.dart';
 import 'package:t_store/utils/helpers/helper_functions.dart';
 import 'package:t_store/utils/popups/animation_loader.dart';
+
+import '../../../../personalization/screens/profile/widgets/profile_menu2.dart';
 
 class OrderListItems extends StatelessWidget {
   const OrderListItems({super.key});
@@ -97,7 +100,13 @@ class OrderListItems extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Text(
+
+                                    ProfileMenu2(
+                                        title: 'Id: ',
+                                        value: order.id,
+                                        icon: Iconsax.copy,
+                                        onPressed: () {}),
+                                    /*Text(
                                       'Orden',
                                       style: Theme.of(context)
                                           .textTheme
@@ -106,7 +115,7 @@ class OrderListItems extends StatelessWidget {
                                     Text(order.id,
                                         style: Theme.of(context)
                                             .textTheme
-                                            .titleMedium),
+                                            .titleMedium),*/
                                   ],
                                 ),
                               ),
