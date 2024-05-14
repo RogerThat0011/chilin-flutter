@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
 class ProfileMenu2 extends StatelessWidget {
   const ProfileMenu2({
     super.key,
-    this.icon = Iconsax.arrow_right_34,
     required this.onPressed,
     required this.title,
     required this.value,
   });
 
-  final IconData icon;
   final VoidCallback onPressed;
   final String title, value;
 
@@ -24,7 +21,7 @@ class ProfileMenu2 extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-                flex: 0,
+                flex: 3,
                 child: Text(
                   title,
                   style: Theme.of(context).textTheme.bodySmall,
@@ -35,12 +32,6 @@ class ProfileMenu2 extends StatelessWidget {
                   value,
                   style: Theme.of(context).textTheme.bodyMedium,
                 )),
-            Expanded(child:
-            Padding(
-              padding: const EdgeInsets.only(left: 0),
-                child: Icon(icon, size: 18)),
-            ),
-
           ],
         ),
       ),
