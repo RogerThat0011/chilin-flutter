@@ -23,7 +23,7 @@ class OrderDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: const TAppBar(
         showBackArrow: true,
-        title: Text('Detalles del pedido'),
+        title: Text('Información del pedido'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(TSizes.defaultSpace),
@@ -46,7 +46,7 @@ class OrderDetailsScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const TSectionHeading(
-                    title: 'Información del pedido', showActionButton: false),
+                    title: 'Detalles del pedido', showActionButton: false),
                 const SizedBox(height: TSizes.spaceBtwItems),
                 ProfileMenu2(
                     title: 'Orden ID: ', value: "${orderId}", onPressed: () {}),
