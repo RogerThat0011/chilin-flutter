@@ -4,6 +4,7 @@ import 'package:t_store/common/widgets/brands/brand_card.dart';
 import 'package:t_store/common/widgets/layouts/grid_layout.dart';
 import 'package:t_store/common/widgets/texts/section_heading.dart';
 import 'package:t_store/features/shop/controllers/category_controller.dart';
+import 'package:t_store/features/shop/controllers/product/product_controller.dart';
 import 'package:t_store/features/shop/screens/brands/brand_products.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/shimmers/brand_shimmer.dart';
@@ -44,13 +45,26 @@ class AllBrandsScreen extends StatelessWidget {
                       mainAxisExtent: 80,
                       itemBuilder: (_, index) {
                         final category = categories.allCategories[index];
-                        return BrandCard(
-                          showBorder: true,
-                          onTap: () => Get.to(() => BrandProducts(category: category)),
-                          category: category,
-                          numberProducts: categories.allCategories.length,
+                        return FutureBuilder<int>(
+                          future: categories.getCategoryProductsCount(category.id),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState == ConnectionState.waiting) {
+                              return const CircularProgressIndicator();
+                            } else if (snapshot.hasError) {
+                              return Text('Error: ${snapshot.error}');
+                            } else {
+                              final int productsCount = snapshot.data ?? 0;
+                              return BrandCard(
+                                showBorder: true,
+                                onTap: () => Get.to(() => BrandProducts(category: category, productsCount: productsCount)),
+                                category: category,
+                                numberProducts: productsCount,
+                              );
+                            }
+                          },
                         );
-                      });
+                      }
+                  );
                 },
               )
             ],

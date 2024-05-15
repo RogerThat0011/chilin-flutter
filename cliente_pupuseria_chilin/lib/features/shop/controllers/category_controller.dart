@@ -50,4 +50,14 @@ class CategoryController extends GetxController{
       return [];
     }
   }
+
+  Future<int> getCategoryProductsCount(String categoryId) async {
+    try {
+      final products = await ProductRepository.instance.getProductsForCategory(categoryId: categoryId);
+      return products.length;
+    } catch (e) {
+      Loaders.errorSnackBar(title: '¡Ocurrió un error!', message: e.toString());
+      return 0;
+    }
+  }
 }
