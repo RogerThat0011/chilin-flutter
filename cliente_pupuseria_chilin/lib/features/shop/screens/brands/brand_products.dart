@@ -9,9 +9,10 @@ import 'package:t_store/utils/helpers/cloud_helper_functions.dart';
 import 'package:t_store/utils/shimmers/vertical_product_shimmer.dart';
 
 class BrandProducts extends StatelessWidget {
-  const BrandProducts({super.key, required this.category});
+  const BrandProducts({super.key, required this.category, this.productsCount});
 
   final CategoryModel category;
+  final int? productsCount;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,9 @@ class BrandProducts extends StatelessWidget {
         child: Padding(padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: Column(
           children: [
-            BrandCard(showBorder: true, category: category),
+
+            BrandCard(showBorder: true, category: category, numberProducts: productsCount),
+
             const SizedBox(height: TSizes.spaceBtwSections),
 
             FutureBuilder(
