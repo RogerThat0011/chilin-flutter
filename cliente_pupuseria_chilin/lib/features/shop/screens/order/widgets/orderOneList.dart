@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:t_store/common/widgets/images/rounded_image.dart';
 import 'package:t_store/features/personalization/screens/profile/widgets/profile_menu2.dart';
+import 'package:t_store/utils/helpers/helper_functions.dart';
 import '../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../common/widgets/texts/section_heading.dart';
+import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../controllers/product/order_controller.dart';
 import '../../../models/order_model.dart';
@@ -10,11 +13,12 @@ import '../../../models/order_model.dart';
 class OrderDetailsScreen extends StatelessWidget {
   final String orderId;
 
-  OrderDetailsScreen({required this.orderId});
+  const OrderDetailsScreen({super.key, required this.orderId});
 
   @override
   Widget build(BuildContext context) {
     final orderController = Get.find<OrderController>();
+    final dark = THelperFunctions.isDarkMode(context);
 
     Future<List<OrderModel>>? userOrders;
     userOrders ??= orderController.fetchUserOrders();
@@ -58,21 +62,30 @@ class OrderDetailsScreen extends StatelessWidget {
                     title: 'Fecha: ',
                     value: "${order.formattedOrderDate}",
                     onPressed: () {}),
-
-              /*  Expanded(
-
+                Expanded(
                   child: ListView.builder(
                     itemCount: order.items.length,
                     itemBuilder: (context, index) {
                       final item = order.items[index];
                       return ListTile(
-
-                        subtitle: Text(
-                            'Cantidad: ${item.quantity}, Precio: \$${item.price.toStringAsFixed(2)}'),
+                        leading: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            TRoundedImage(
+                              imageUrl: item.image ?? '',
+                              width: 60,
+                              height: 60,
+                              isNetworkImage: true,
+                              padding: const EdgeInsets.all(TSizes.sm),
+                              backgroundColor:
+                                  dark ? TColors.darkerGrey : TColors.light,
+                            ),
+                          ],
+                        ),
                       );
                     },
                   ),
-                ), */
+                ),
               ],
             );
           },

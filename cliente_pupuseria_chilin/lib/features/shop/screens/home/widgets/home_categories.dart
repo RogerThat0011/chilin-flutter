@@ -8,7 +8,6 @@ import '../../../../../utils/helpers/helper_functions.dart';
 import '../../../../../common/widgets/image_text_widgets/vertical_image_text.dart';
 import '../../../../../utils/constants/image_strings.dart';
 
-
 class THomeCategories extends StatelessWidget {
   const THomeCategories({
     super.key,
@@ -16,35 +15,50 @@ class THomeCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final categoryController = Get.put(CategoryController());
 
     final dark = THelperFunctions.isDarkMode(context);
 
-    return Obx(
-      (){
-        if(categoryController.isLoading.value) return const CategoryShimmer();
+    return Obx(() {
+      if (categoryController.isLoading.value) return const CategoryShimmer();
 
-        if(categoryController.featuredCategories.isEmpty){
-          return Center(child: Text('¡No hay categorias a mostrar!', style: Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.white)));
-        }
-        return SizedBox(
-          height: 80,
-          child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: categoryController.featuredCategories.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (_, index) {
-              final category = categoryController.featuredCategories[index];
-              return TVerticalImageText(
-                image: category.image,
-                title: category.name,
-                onTap: () => Get.to(() => BrandProducts(category: category)),
-              );
-            },
-          ),
-        );
+      if (categoryController.featuredCategories.isEmpty) {
+        return Center(
+            child: Text('¡No hay categorias a mostrar!',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .apply(color: Colors.white)));
       }
-    );
+      return SizedBox(
+        height: 80,
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: categoryController.featuredCategories.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (_, index) {
+            final category = categoryController.featuredCategories[index];
+            return FutureBuilder<int>(
+              future: categoryController.getCategoryProductsCount(category.id),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else {
+                  final int productsCount = snapshot.data ?? 0;
+                  return TVerticalImageText(
+                    image: category.image,
+                    title: category.name,
+                    onTap: () => Get.to(() => BrandProducts(
+                        category: category, productsCount: productsCount)),
+                  );
+                }
+              },
+            );
+          },
+        ),
+      );
+    });
   }
 }
