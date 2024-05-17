@@ -12,7 +12,7 @@ import 'package:t_store/utils/helpers/cloud_helper_functions.dart';
 import 'package:t_store/utils/helpers/helper_functions.dart';
 import 'package:t_store/utils/popups/animation_loader.dart';
 
-import 'package:t_store/features/shop/screens/order/widgets/orderOneList.dart';
+import 'package:t_store/features/shop/screens/order/widgets/order_details.dart';
 
 class OrderListItems extends StatelessWidget {
   const OrderListItems({super.key});

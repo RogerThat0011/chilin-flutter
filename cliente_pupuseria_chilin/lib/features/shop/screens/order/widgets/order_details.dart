@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/common/widgets/images/rounded_image.dart';
-import 'package:t_store/features/personalization/screens/profile/widgets/profile_menu2.dart';
 import 'package:t_store/utils/helpers/helper_functions.dart';
 import '../../../../../common/widgets/appbar/appbar.dart';
-import '../../../../../common/widgets/texts/section_heading.dart';
+import '../../../../../common/widgets/texts/brand_title_text_with_verified_icon.dart';
+import '../../../../../common/widgets/texts/product_title_text.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../controllers/product/order_controller.dart';
@@ -23,14 +23,13 @@ class OrderDetailsScreen extends StatelessWidget {
     Future<List<OrderModel>>? userOrders;
     userOrders ??= orderController.fetchUserOrders();
 
-    //
     return Scaffold(
       appBar: const TAppBar(
         showBackArrow: true,
-        title: Text('Información del pedido'),
+        title: Text('Detalle de la orden'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.only(left: 20),
         child: FutureBuilder<List<OrderModel>>(
           future: userOrders,
           builder: (context, snapshot) {
@@ -38,30 +37,26 @@ class OrderDetailsScreen extends StatelessWidget {
               return const Center(
                   child: Text('Error al intentar obtener las ordenes'));
             }
-
             if (!snapshot.hasData) {
               return const Center(child: CircularProgressIndicator());
             }
-
             final orders = snapshot.data!;
             final order = orders.firstWhere((order) => order.id == orderId);
 
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const TSectionHeading(
-                    title: 'Detalles del pedido', showActionButton: false),
                 const SizedBox(height: TSizes.spaceBtwItems),
-                ProfileMenu2(
-                    title: 'Orden ID: ', value: "${orderId}", onPressed: () {}),
-                ProfileMenu2(
-                    title: 'Estado:',
-                    value: "${order.orderStatusText}",
-                    onPressed: () {}),
-                ProfileMenu2(
-                    title: 'Fecha: ',
-                    value: "${order.formattedOrderDate}",
-                    onPressed: () {}),
+                ProductTitleText(title: "    Orden:  ${orderId}", maxLines: 1),
+                const SizedBox(height: TSizes.spaceBtwItems),
+                ProductTitleText(
+                    title: "    Estado:  ${order.orderStatusText}",
+                    maxLines: 1),
+                const SizedBox(height: TSizes.spaceBtwItems),
+                ProductTitleText(
+                    title: "    Fecha:  ${order.formattedOrderDate}",
+                    maxLines: 1),
+                const SizedBox(height: TSizes.spaceBtwItems),
                 Expanded(
                   child: ListView.builder(
                     itemCount: order.items.length,
@@ -80,12 +75,29 @@ class OrderDetailsScreen extends StatelessWidget {
                               backgroundColor:
                                   dark ? TColors.darkerGrey : TColors.light,
                             ),
+                            const SizedBox(height: TSizes.spaceBtwItems),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                BrandtitleWithVerifiedIcon(
+                                    title: "  ${item.categoryName}"),
+                                ProductTitleText(
+                                    title: "  ${item.title}", maxLines: 1),
+                                Text(
+                                  '  Precio: \$${item.price} x ${item.quantity}',
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: TSizes.spaceBtwItems),
                           ],
                         ),
                       );
                     },
                   ),
                 ),
+                ProductTitleText(
+                    title: "    Total del pedido:  \$   ${order.totalAmount}",
+                    maxLines: 1)
               ],
             );
           },
