@@ -39,16 +39,48 @@ class OrderDetailsScreen extends StatelessWidget {
           final order = orders.firstWhere((order) => order.id == orderId);
 
           return Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(height: 10),
+                Text(
+                  "Orden: ${orderId}",
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: TColors.dark,
+                  ),
+                ),
                 const SizedBox(height: TSizes.spaceBtwItems),
-                ProductTitleText(title: "Orden: ${orderId}", maxLines: 1),
+                Text(
+                  "Estado: ${order.orderStatusText}",
+                  style:  TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey.shade800,
+                  ),
+                ),
                 const SizedBox(height: TSizes.spaceBtwItems),
-                ProductTitleText(title: "Estado: ${order.orderStatusText}", maxLines: 1),
+                Text(
+                  "Fecha: ${order.formattedOrderDate}",
+                  style:  TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey.shade800,
+                  ),
+                ),
                 const SizedBox(height: TSizes.spaceBtwItems),
-                ProductTitleText(title: "Fecha: ${order.formattedOrderDate}", maxLines: 1),
+                const SizedBox(height: TSizes.spaceBtwItems),
+                Container(
+                  alignment: Alignment.center,
+                  child: const Text(
+                    "Productos Adquiridos",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: TColors.dark,
+                    ),
+                  ),
+                ),
                 const SizedBox(height: TSizes.spaceBtwItems),
                 Expanded(
                   child: ListView.builder(
@@ -92,12 +124,33 @@ class OrderDetailsScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                const SizedBox(height: 10), // Agrega un espacio entre los elementos
-                ProductTitleText(title: 'Metodo de pago: ${order.paymentMethod}'),
-                const SizedBox(height: 10), // Agrega un espacio entre los elementos
-                const ProductTitleText(title: 'Propina por la app: \$0.50'), // Agrega la sección de la propina
-                const SizedBox(height: 10), // Agrega un espacio entre los elementos
-                ProductTitleText(title: "Total del pedido: \$${order.totalAmount}", maxLines: 1),
+                const SizedBox(height: 20),
+                Text(
+                  'Método de pago: ${order.paymentMethod}',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey.shade800,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  'Propina por la app: \$0.50',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey.shade800,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  "Total: \$${order.totalAmount}",
+                  maxLines: 1,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green,
+                  ),
+                ),
+                const SizedBox(height: 30),
               ],
             ),
           );

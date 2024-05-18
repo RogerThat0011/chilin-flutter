@@ -1,4 +1,4 @@
-/// Exception class for handling various platform-related errors.
+/// Clase de excepción para manejar varios errores relacionados con la plataforma.
 class TPlatformException implements Exception {
   final String code;
 
@@ -7,36 +7,36 @@ class TPlatformException implements Exception {
   String get message {
     switch (code) {
       case 'INVALID_LOGIN_CREDENTIALS':
-        return 'Invalid login credentials. Please double-check your information.';
+        return 'Credenciales de inicio de sesión inválidas. Por favor, verifique su información.';
       case 'too-many-requests':
-        return 'Too many requests. Please try again later.';
+        return 'Demasiadas solicitudes. Por favor, inténtelo de nuevo más tarde.';
       case 'invalid-argument':
-        return 'Invalid argument provided to the authentication method.';
+        return 'Argumento inválido proporcionado al método de autenticación.';
       case 'invalid-password':
-        return 'Incorrect password. Please try again.';
+        return 'Contraseña incorrecta. Por favor, inténtelo de nuevo.';
       case 'invalid-phone-number':
-        return 'The provided phone number is invalid.';
+        return 'El número de teléfono proporcionado es inválido.';
       case 'operation-not-allowed':
-        return 'The sign-in provider is disabled for your Firebase project.';
+        return 'El proveedor de inicio de sesión está deshabilitado para su proyecto Firebase.';
       case 'session-cookie-expired':
-        return 'The Firebase session cookie has expired. Please sign in again.';
+        return 'La cookie de sesión de Firebase ha expirado. Por favor, inicie sesión nuevamente.';
       case 'uid-already-exists':
-        return 'The provided user ID is already in use by another user.';
+        return 'El ID de usuario proporcionado ya está en uso por otro usuario.';
       case 'sign_in_failed':
-        return 'Sign-in failed. Please try again.';
+        return 'Inicio de sesión fallido. Por favor, inténtelo de nuevo.';
       case 'network-request-failed':
-        return 'Network request failed. Please check your internet connection.';
+        return 'La solicitud de red falló. Por favor, verifique su conexión a internet.';
       case 'internal-error':
-        return 'Internal error. Please try again later.';
+        return 'Error interno. Por favor, inténtelo de nuevo más tarde.';
       case 'invalid-verification-code':
-        return 'Invalid verification code. Please enter a valid code.';
+        return 'Código de verificación inválido. Por favor, introduzca un código válido.';
       case 'invalid-verification-id':
-        return 'Invalid verification ID. Please request a new verification code.';
+        return 'ID de verificación inválido. Por favor, solicite un nuevo código de verificación.';
       case 'quota-exceeded':
-        return 'Quota exceeded. Please try again later.';
-    // Add more cases as needed...
+        return 'Cuota excedida. Por favor, inténtelo de nuevo más tarde.';
+    // Agrega más casos según sea necesario...
       default:
-        return 'An unexpected platform error occurred. Please try again.';
+        return 'Se produjo un error de plataforma inesperado. Por favor, inténtelo de nuevo.';
     }
   }
 }

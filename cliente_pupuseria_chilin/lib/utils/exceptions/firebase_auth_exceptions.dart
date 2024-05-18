@@ -1,106 +1,106 @@
-/// Custom exception class to handle various Firebase authentication-related errors.
+/// Clase de excepción personalizada para manejar varios errores relacionados con la autenticación de Firebase.
 class TFirebaseAuthException implements Exception {
-  /// The error code associated with the exception.
+  /// El código de error asociado con la excepción.
   final String code;
 
-  /// Constructor that takes an error code.
+  /// Constructor que toma un código de error.
   TFirebaseAuthException(this.code);
 
-  /// Get the corresponding error message based on the error code.
+  /// Obtiene el mensaje de error correspondiente basado en el código de error.
   String get message {
     switch (code) {
       case 'email-already-in-use':
-        return 'The email address is already registered. Please use a different email.';
+        return 'La dirección de correo electrónico ya está registrada. Por favor, utilice un correo electrónico diferente.';
       case 'invalid-email':
-        return 'The email address provided is invalid. Please enter a valid email.';
+        return 'La dirección de correo electrónico proporcionada no es válida. Por favor, introduzca un correo electrónico válido.';
       case 'weak-password':
-        return 'The password is too weak. Please choose a stronger password.';
+        return 'La contraseña es demasiado débil. Por favor, elija una contraseña más segura.';
       case 'user-disabled':
-        return 'This user account has been disabled. Please contact support for assistance.';
+        return 'Esta cuenta de usuario ha sido deshabilitada. Por favor, póngase en contacto con el soporte para obtener ayuda.';
       case 'user-not-found':
-        return 'Invalid login details. User not found.';
+        return 'Detalles de inicio de sesión no válidos. Usuario no encontrado.';
       case 'wrong-password':
-        return 'Incorrect password. Please check your password and try again.';
+        return 'Contraseña incorrecta. Por favor, compruebe su contraseña e inténtelo de nuevo.';
       case 'invalid-verification-code':
-        return 'Invalid verification code. Please enter a valid code.';
+        return 'Código de verificación no válido. Por favor, introduzca un código válido.';
       case 'invalid-verification-id':
-        return 'Invalid verification ID. Please request a new verification code.';
+        return 'ID de verificación no válido. Por favor, solicite un nuevo código de verificación.';
       case 'quota-exceeded':
-        return 'Quota exceeded. Please try again later.';
+        return 'Cuota excedida. Por favor, inténtelo de nuevo más tarde.';
       case 'email-already-exists':
-        return 'The email address already exists. Please use a different email.';
+        return 'La dirección de correo electrónico ya existe. Por favor, utilice un correo electrónico diferente.';
       case 'provider-already-linked':
-        return 'The account is already linked with another provider.';
+        return 'La cuenta ya está vinculada con otro proveedor.';
       case 'requires-recent-login':
-        return 'This operation is sensitive and requires recent authentication. Please log in again.';
+        return 'Esta operación es sensible y requiere autenticación reciente. Por favor, vuelva a iniciar sesión.';
       case 'credential-already-in-use':
-        return 'This credential is already associated with a different user account.';
+        return 'Esta credencial ya está asociada con una cuenta de usuario diferente.';
       case 'user-mismatch':
-        return 'The supplied credentials do not correspond to the previously signed in user.';
+        return 'Las credenciales suministradas no corresponden al usuario que inició sesión anteriormente.';
       case 'account-exists-with-different-credential':
-        return 'An account already exists with the same email but different sign-in credentials.';
+        return 'Ya existe una cuenta con el mismo correo electrónico pero con credenciales de inicio de sesión diferentes.';
       case 'operation-not-allowed':
-        return 'This operation is not allowed. Contact support for assistance.';
+        return 'Esta operación no está permitida. Póngase en contacto con el soporte para obtener ayuda.';
       case 'expired-action-code':
-        return 'The action code has expired. Please request a new action code.';
+        return 'El código de acción ha expirado. Por favor, solicite un nuevo código de acción.';
       case 'invalid-action-code':
-        return 'The action code is invalid. Please check the code and try again.';
+        return 'El código de acción es inválido. Por favor, compruebe el código e inténtelo de nuevo.';
       case 'missing-action-code':
-        return 'The action code is missing. Please provide a valid action code.';
+        return 'Falta el código de acción. Por favor, proporcione un código de acción válido.';
       case 'user-token-expired':
-        return 'The user\'s token has expired, and authentication is required. Please sign in again.';
+        return 'El token del usuario ha caducado y se requiere autenticación. Por favor, inicie sesión nuevamente.';
       case 'user-not-found':
-        return 'No user found for the given email or UID.';
+        return 'No se encontró ningún usuario para el correo electrónico o UID dado.';
       case 'invalid-credential':
-        return 'The supplied credential is malformed or has expired.';
+        return 'La credencial suministrada está mal formada o ha caducado.';
       case 'wrong-password':
-        return 'The password is invalid. Please check your password and try again.';
+        return 'La contraseña es inválida. Por favor, compruebe su contraseña e inténtelo de nuevo.';
       case 'user-token-revoked':
-        return 'The user\'s token has been revoked. Please sign in again.';
+        return 'El token del usuario ha sido revocado. Por favor, inicie sesión nuevamente.';
       case 'invalid-message-payload':
-        return 'The email template verification message payload is invalid.';
+        return 'La carga útil del mensaje de verificación de la plantilla de correo electrónico no es válida.';
       case 'invalid-sender':
-        return 'The email template sender is invalid. Please verify the sender\'s email.';
+        return 'El remitente de la plantilla de correo electrónico no es válido. Por favor, verifique el correo electrónico del remitente.';
       case 'invalid-recipient-email':
-        return 'The recipient email address is invalid. Please provide a valid recipient email.';
+        return 'La dirección de correo electrónico del destinatario no es válida. Por favor, proporcione un destinatario válido.';
       case 'missing-iframe-start':
-        return 'The email template is missing the iframe start tag.';
+        return 'Falta la etiqueta de inicio del iframe en la plantilla de correo electrónico.';
       case 'missing-iframe-end':
-        return 'The email template is missing the iframe end tag.';
+        return 'Falta la etiqueta de fin del iframe en la plantilla de correo electrónico.';
       case 'missing-iframe-src':
-        return 'The email template is missing the iframe src attribute.';
+        return 'Falta el atributo src del iframe en la plantilla de correo electrónico.';
       case 'auth-domain-config-required':
-        return 'The authDomain configuration is required for the action code verification link.';
+        return 'La configuración authDomain es necesaria para el enlace de verificación del código de acción.';
       case 'missing-app-credential':
-        return 'The app credential is missing. Please provide valid app credentials.';
+        return 'Falta la credencial de la aplicación. Por favor, proporcione credenciales de aplicación válidas.';
       case 'invalid-app-credential':
-        return 'The app credential is invalid. Please provide a valid app credential.';
+        return 'La credencial de la aplicación no es válida. Por favor, proporcione una credencial de aplicación válida.';
       case 'session-cookie-expired':
-        return 'The Firebase session cookie has expired. Please sign in again.';
+        return 'La cookie de sesión de Firebase ha expirado. Por favor, inicie sesión nuevamente.';
       case 'uid-already-exists':
-        return 'The provided user ID is already in use by another user.';
+        return 'El ID de usuario proporcionado ya está en uso por otro usuario.';
       case 'invalid-cordova-configuration':
-        return 'The provided Cordova configuration is invalid.';
+        return 'La configuración de Cordova proporcionada no es válida.';
       case 'app-deleted':
-        return 'This instance of FirebaseApp has been deleted.';
+        return 'Esta instancia de FirebaseApp ha sido eliminada.';
       case 'user-disabled':
-        return 'The user account has been disabled.';
+        return 'La cuenta de usuario ha sido deshabilitada.';
       case 'user-token-mismatch':
-        return 'The provided user\'s token has a mismatch with the authenticated user\'s user ID.';
+        return 'El token del usuario proporcionado no coincide con el ID de usuario autenticado.';
       case 'web-storage-unsupported':
-        return 'Web storage is not supported or is disabled.';
+        return 'El almacenamiento web no es compatible o está desactivado.';
       case 'invalid-credential':
-        return 'The supplied credential is invalid. Please check the credential and try again.';
+        return 'La credencial suministrada no es válida. Por favor, compruebe la credencial e inténtelo de nuevo.';
       case 'app-not-authorized':
-        return 'The app is not authorized to use Firebase Authentication with the provided API key.';
+        return 'La aplicación no está autorizada para usar la Autenticación de Firebase con la clave API proporcionada.';
       case 'keychain-error':
-        return 'A keychain error occurred. Please check the keychain and try again.';
+        return 'Se produjo un error en el llavero. Por favor, compruebe el llavero e inténtelo de nuevo.';
       case 'internal-error':
-        return 'An internal authentication error occurred. Please try again later.';
+        return 'Se produjo un error de autenticación interno. Por favor, inténtelo de nuevo más tarde.';
       case 'INVALID_LOGIN_CREDENTIALS':
-        return 'Invalid login credentials.';
+        return 'Credenciales de inicio de sesión no válidas.';
       default:
-        return 'An unexpected authentication error occurred. Please try again.';
+        return 'Se produjo un error de autenticación inesperado. Por favor, inténtelo de nuevo.';
     }
   }
 }

@@ -14,6 +14,7 @@ class ProductRepository extends GetxController {
       final snapshot = await _db
           .collection('Productos')
           .where('isFeatured', isEqualTo: true)
+          .where('estado', isEqualTo: 'Disponible')
           .limit(4)
           .get();
       return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
@@ -31,6 +32,7 @@ class ProductRepository extends GetxController {
       final snapshot = await _db
           .collection('Productos')
           .where('isFeatured', isEqualTo: true)
+          .where('estado', isEqualTo: 'Disponible')
           .get();
       return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
     } on FirebaseException catch (e) {
@@ -65,10 +67,12 @@ class ProductRepository extends GetxController {
           ? await _db
               .collection('Productos')
               .where('idCategoria', isEqualTo: categoryId)
+              .where('estado', isEqualTo: 'Disponible')
               .get()
           : await _db
               .collection('Productos')
               .where('idCategoria', isEqualTo: categoryId)
+              .where('estado', isEqualTo: 'Disponible')
               .limit(limit)
               .get();
 
@@ -91,6 +95,7 @@ class ProductRepository extends GetxController {
       final snapshot = await _db
           .collection('Productos')
           .where(FieldPath.documentId, whereIn: productId)
+          .where('estado', isEqualTo: 'Disponible')
           .get();
       return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
     } on FirebaseException catch (e) {
