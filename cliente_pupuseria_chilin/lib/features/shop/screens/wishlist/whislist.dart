@@ -24,11 +24,7 @@ class FavoriteScreen extends StatelessWidget {
     return Scaffold(
       appBar: TAppBar(
         title: Text('Favoritos',
-            style: Theme.of(context).textTheme.headlineMedium),
-        actions: [
-          CircularIcon(
-              icon: Iconsax.add, onPressed: () => Get.to(const HomeScreen()))
-        ],
+            style: Theme.of(context).textTheme.headlineMedium)
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -39,10 +35,10 @@ class FavoriteScreen extends StatelessWidget {
                 () => FutureBuilder(
                     future: controller.favouriteProducts(),
                     builder: (context, snapshot) {
-
                       final emptyWidget = AnimationLoaderWidget(
                         text: '¡No has agregado nada a tus favoritos!',
                         animation: TImages.pencilAnimation,
+                        sizeAnimation: 0.8,
                         onActionPressed: () =>
                             Get.to(() => const NavigationMenu()),
                       );

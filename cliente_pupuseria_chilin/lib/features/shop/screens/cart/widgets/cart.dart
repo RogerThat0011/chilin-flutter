@@ -15,7 +15,7 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = CartController.instance;
     return Obx(
-        () => Scaffold(
+      () => Scaffold(
         appBar: TAppBar(
             showBackArrow: true,
             title: Text('Carrito',
@@ -24,28 +24,30 @@ class CartScreen extends StatelessWidget {
           () {
             final emptyWidget = AnimationLoaderWidget(
               text: '¡Vaya! Tu carrito está vacío.',
-              animation: TImages.cartAnimation,
+              animation: TImages.newCartAnimation,
+              sizeAnimation: 0.2,
             );
 
             if (controller.cartItems.isEmpty) {
               return emptyWidget;
             } else {
-              return
-                const Padding(
-                  padding: EdgeInsets.all(TSizes.defaultSpace),
-                  child: TCartItems(),
+              return const Padding(
+                padding: EdgeInsets.all(TSizes.defaultSpace),
+                child: TCartItems(),
               );
             }
           },
         ),
-        bottomNavigationBar: controller.cartItems.isEmpty ? const SizedBox() : Padding(
-          padding: const EdgeInsets.all(TSizes.defaultSpace),
-          child: ElevatedButton(
-            onPressed: () => Get.to(() => const CheckoutScreen()),
-            child: Obx(() =>
-                Text('Realizar Orden \$${controller.totalCartPrice.value}')),
-          ),
-        ),
+        bottomNavigationBar: controller.cartItems.isEmpty
+            ? const SizedBox()
+            : Padding(
+                padding: const EdgeInsets.all(TSizes.defaultSpace),
+                child: ElevatedButton(
+                  onPressed: () => Get.to(() => const CheckoutScreen()),
+                  child: Obx(() => Text(
+                      'Realizar Orden \$${controller.totalCartPrice.value}')),
+                ),
+              ),
       ),
     );
   }

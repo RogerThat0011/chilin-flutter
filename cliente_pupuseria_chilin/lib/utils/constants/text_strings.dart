@@ -4,7 +4,7 @@ class TTexts {
 
   // -- GLOBAL Texts
   static const String and = "y";
-  static const String skip = "Skip";
+  static const String skip = "Saltar";
   static const String done = "Listo";
   static const String submit = "Enviar";
   static const String appName = "Pupuseria Chilin";
@@ -12,14 +12,15 @@ class TTexts {
 
 
   // -- OnBoarding Texts
-  static const String onBoardingTitle1 = "Choose your product";
-  static const String onBoardingTitle2 = "Select Payment Method";
-  static const String onBoardingTitle3 = "Deliver at your door step";
+  static const String onBoardingTitle1 = "Realiza tus pedidos";
+  static const String onBoardingTitle2 = "Revisa el estado de tu Orden";
+  static const String onBoardingTitle3 = "Retira tu Orden";
+  static const String onBoardingTitle4 = "PROXIMAMENTE";
 
-  static const String onBoardingSubTitle1 = "Welcome to a World of Limitless Choices - Your Perfect Product Awaits!";
-  static const String onBoardingSubTitle2 = "For Seamless Transactions, Choose Your Payment Path - Your Convenience, Our Priority!";
-  static const String onBoardingSubTitle3 = "From Our Doorstep to Yours - Swift, Secure, and Contactless Delivery!";
-
+  static const String onBoardingSubTitle1 = "¡Bienvenido a Chilin!";
+  static const String onBoardingSubTitle2 = "¡Puedes revisar en tiempo real tu orden!";
+  static const String onBoardingSubTitle3 = "¡Retira tu orden en nuestro establecimiento!";
+  static const String onBoardingSubTitle4 = "¡Tu pedido a la puerta de tu casa!";
 
   // -- Authentication Forms
   static const String firstName = "Nombre";
@@ -40,7 +41,7 @@ class TTexts {
   static const String termsOfUse = "T&C";
   static const String verificationCode = "verificationCode";
   static const String resendEmail = "Reenviar el correo electronico";
-  static const String resendEmailIn = "Resend email in";
+  static const String resendEmailIn = "Reenviar correo electrónico en";
 
 
   // -- Authentication Headings
@@ -52,11 +53,11 @@ class TTexts {
   static const String changeYourPasswordTitle = "Se envio el correo para actualizar la contraseña";
   static const String changeYourPasswordSubTitle = "La seguridad de tu cuenta es nuestra prioridad! Te hemos enviado un enlance para que cambies tu contraseña y mantener tu contraseña actualizada";
   static const String confirmEmail = "Verifica tu correo electronico!";
-  static const String confirmEmailSubTitle = "Congratulations! Your Account Awaits: Verify Your Email to Start Shopping and Experience a World of Unrivaled Deals and Personalized Offers.";
-  static const String emailNotReceivedMessage = "Didn’t get the email? Check your junk/spam or resend it.";
+  static const String confirmEmailSubTitle = "¡Felicidades! Tu cuenta te espera: verifica tu correo electrónico para comenzar a realizar tus ordenes.";
+  static const String emailNotReceivedMessage = "¿No recibiste el correo electrónico? Revisa tu correo no deseado/spam o reenvíalo.";
   static const String yourAccountCreatedTitle = "¡Tu cuenta fue creada con exito!";
   static const String yourAccountCreatedSubTitle = "Bienvenido a Pupuseria Chilin!";
-
+ 
 
   // -- Product
   static const String popularProducts = "Productos Populares";

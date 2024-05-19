@@ -1,35 +1,35 @@
-/// Custom exception class to handle various format-related errors.
+/// Clase de excepción personalizada para manejar varios errores relacionados con el formato.
 class TFormatException implements Exception {
-  /// The associated error message.
+  /// El mensaje de error asociado.
   final String message;
 
-  /// Default constructor with a generic error message.
-  const TFormatException([this.message = 'An unexpected format error occurred. Please check your input.']);
+  /// Constructor predeterminado con un mensaje de error genérico.
+  const TFormatException([this.message = 'Se produjo un error de formato inesperado. Por favor, verifique su entrada.']);
 
-  /// Create a format exception from a specific error message.
+  /// Crea una excepción de formato a partir de un mensaje de error específico.
   factory TFormatException.fromMessage(String message) {
     return TFormatException(message);
   }
 
-  /// Get the corresponding error message.
+  /// Obtiene el mensaje de error correspondiente.
   String get formattedMessage => message;
 
-  /// Create a format exception from a specific error code.
+  /// Crea una excepción de formato a partir de un código de error específico.
   factory TFormatException.fromCode(String code) {
     switch (code) {
       case 'invalid-email-format':
-        return const TFormatException('The email address format is invalid. Please enter a valid email.');
+        return const TFormatException('El formato de la dirección de correo electrónico es inválido. Por favor, introduzca un correo electrónico válido.');
       case 'invalid-phone-number-format':
-        return const TFormatException('The provided phone number format is invalid. Please enter a valid number.');
+        return const TFormatException('El formato del número de teléfono proporcionado es inválido. Por favor, introduzca un número válido.');
       case 'invalid-date-format':
-        return const TFormatException('The date format is invalid. Please enter a valid date.');
+        return const TFormatException('El formato de fecha es inválido. Por favor, introduzca una fecha válida.');
       case 'invalid-url-format':
-        return const TFormatException('The URL format is invalid. Please enter a valid URL.');
+        return const TFormatException('El formato de URL es inválido. Por favor, introduzca una URL válida.');
       case 'invalid-credit-card-format':
-        return const TFormatException('The credit card format is invalid. Please enter a valid credit card number.');
+        return const TFormatException('El formato de la tarjeta de crédito es inválido. Por favor, introduzca un número de tarjeta de crédito válido.');
       case 'invalid-numeric-format':
-        return const TFormatException('The input should be a valid numeric format.');
-    // Add more cases as needed...
+        return const TFormatException('La entrada debe tener un formato numérico válido.');
+    // Agrega más casos según sea necesario...
       default:
         return const TFormatException();
     }

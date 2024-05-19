@@ -8,7 +8,9 @@ import 'package:t_store/features/personalization/controllers/user_controller.dar
 import 'package:t_store/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/sizes.dart';
+import 'package:t_store/utils/popups/loaders.dart';
 import 'package:t_store/utils/shimmers/ShimmerEffect.dart';
+import 'package:flutter/services.dart';
 
 import 'widgets/change_name.dart';
 import 'widgets/change_phone_number.dart';
@@ -38,15 +40,15 @@ class ProfileScreen extends StatelessWidget {
                     Obx(() {
                       final networkImage = controller.user.value.profilePicture;
                       final image =
-                          networkImage.isNotEmpty ? networkImage : TImages.user;
+                      networkImage.isNotEmpty ? networkImage : TImages.user;
                       return controller.imageUploading.value
                           ? const ShimmerEffect(
-                              width: 80, height: 80, radius: 80)
+                          width: 80, height: 80, radius: 80)
                           : CircularImage(
-                              image: image,
-                              width: 80,
-                              height: 80,
-                              isNetworkImage: networkImage.isNotEmpty);
+                          image: image,
+                          width: 80,
+                          height: 80,
+                          isNetworkImage: networkImage.isNotEmpty);
                     }),
                     TextButton(
                         onPressed: () => controller.uploadUserProfilePicture(),
@@ -71,7 +73,11 @@ class ProfileScreen extends StatelessWidget {
                   title: 'Usuario',
                   value: controller.user.value.username,
                   icon: Iconsax.copy,
-                  onPressed: () {}),
+                  onPressed: () {
+                    Clipboard.setData(
+                        ClipboardData(text: controller.user.value.username));
+                    Loaders.warningSnackBar(title: "¡Nombre de usuario copiado!");
+                  }),
 
               const SizedBox(height: TSizes.spaceBtwItems),
               const Divider(),
@@ -86,21 +92,24 @@ class ProfileScreen extends StatelessWidget {
                   title: 'ID',
                   value: controller.user.value.id,
                   icon: Iconsax.copy,
-                  onPressed: () {}),
+                  onPressed: () {
+                    Clipboard.setData(
+                        ClipboardData(text: controller.user.value.id));
+                    Loaders.warningSnackBar(title: "¡Id de usuario copiado!");
+                  }),
               ProfileMenu(
                   title: 'Correo',
                   value: controller.user.value.email,
                   icon: Iconsax.copy,
-                  onPressed: () {}),
+                  onPressed: () {
+                    Clipboard.setData(
+                        ClipboardData(text: controller.user.value.email));
+                    Loaders.warningSnackBar(title: "¡Correo del usuario copiado!");
+                  }),
               ProfileMenu(
                   title: 'Teléfono',
                   value: '+503 ${controller.user.value.phoneNumber}',
                   onPressed: () => Get.to(() => const ChangePhoneNumber())),
-              /*ProfileMenu(title: 'Genero', value: 'Male', onPressed: () {}),
-              ProfileMenu(
-                  title: 'Fecha de Nacimiento',
-                  value: '24 March, 1999',
-                  onPressed: () {}),*/
 
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),
