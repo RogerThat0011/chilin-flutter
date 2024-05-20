@@ -22,7 +22,7 @@ class ProductMetaData extends StatelessWidget {
         //PRICE
          Row(
           children: [
-            ProductPriceText(price: product.precio.toString(), isLarge: true),
+            ProductPriceText(price: product.precio.toStringAsFixed(2), isLarge: true),
           ],
         ),
 

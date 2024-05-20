@@ -112,7 +112,7 @@ class OrderDetailsScreen extends StatelessWidget {
                                   const SizedBox(height: 4),
                                   ProductTitleText(title: item.title, maxLines: 1),
                                   const SizedBox(height: 4),
-                                  ProductTitleText(title: 'Precio: \$${item.price}'),
+                                  ProductTitleText(title: 'Precio: \$${item.price.toStringAsFixed(2)}'),
                                   const SizedBox(height: 4),
                                   ProductTitleText(title: 'Cantidad: ${item.quantity}'),
                                 ],
@@ -142,7 +142,7 @@ class OrderDetailsScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  "Total: \$${order.totalAmount}",
+                  "Total: \$${order.totalAmount.toStringAsFixed(2)}",
                   maxLines: 1,
                   style: const TextStyle(
                     fontSize: 18,
