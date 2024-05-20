@@ -10,7 +10,7 @@ class BillingAmountSecion extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final cartController = CartController.instance;
-    final subtotal = cartController.totalCartPrice.value;
+    final subtotal = cartController.totalCartPrice.value.toStringAsFixed(2);
 
     return Column(
       children: [
@@ -26,7 +26,7 @@ class BillingAmountSecion extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Propina de app', style: Theme.of(context).textTheme.bodyMedium),
-            Text('\$${TPricingCalculator.calculateShippingCost(subtotal, 'US')}', style: Theme.of(context).textTheme.labelLarge),
+            Text('\$${TPricingCalculator.calculateShippingCost(double.parse(subtotal), 'US')}', style: Theme.of(context).textTheme.labelLarge),
           ],
         ),
         const SizedBox(height: TSizes.spaceBtwItems / 2),
@@ -34,7 +34,7 @@ class BillingAmountSecion extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Total a pagar', style: Theme.of(context).textTheme.bodyMedium),
-            Text('\$${TPricingCalculator.calculateTotalPrice(subtotal, 'US')}', style: Theme.of(context).textTheme.titleMedium),
+            Text('\$${TPricingCalculator.calculateTotalPrice(double.parse(subtotal), 'US')}', style: Theme.of(context).textTheme.titleMedium),
           ],
         ),
       ],

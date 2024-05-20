@@ -27,7 +27,7 @@ class OrderDetailsScreen extends StatelessWidget {
         title: Text('Detalle de la orden'),
       ),
       body: FutureBuilder<List<OrderModel>>(
-        future: orderController.fetchUserOrders(),
+        future: orderController.fetchUserOrdersForDetails(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const Center(child: Text('Error al intentar obtener las ordenes'));
