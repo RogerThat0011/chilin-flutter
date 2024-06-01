@@ -45,7 +45,7 @@ class CartScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () => Get.to(() => const CheckoutScreen()),
                   child: Obx(() => Text(
-                      'Realizar Orden \$${controller.totalCartPrice.value}')),
+                      'Realizar Orden \$${controller.totalCartPrice.value.toStringAsFixed(2)}')),
                 ),
               ),
       ),

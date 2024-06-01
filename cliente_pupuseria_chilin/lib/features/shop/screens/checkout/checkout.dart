@@ -22,7 +22,7 @@ class CheckoutScreen extends StatelessWidget {
     final cartController = CartController.instance;
     final subtotal = cartController.totalCartPrice.value;
     final orderController = Get.put(OrderController());
-    final totalAmount = TPricingCalculator.calculateTotalPrice(subtotal, 'US');
+    final totalAmount = TPricingCalculator.calculateTotalPrice(subtotal, 'US').toStringAsFixed(2);
     final dark = THelperFunctions.isDarkMode(context);
 
     return Scaffold(
@@ -73,7 +73,7 @@ class CheckoutScreen extends StatelessWidget {
         padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: ElevatedButton(
           onPressed: subtotal > 0 ?
-          () => orderController.processOrder(totalAmount)
+          () => orderController.processOrder(double.parse(totalAmount))
           : () => Loaders.warningSnackBar(title: '¡El carrito está vacío!', message: 'Agrega productos al carrito para proceder.'),
           child: Text(
               'Confirmar Orden \$$totalAmount'),

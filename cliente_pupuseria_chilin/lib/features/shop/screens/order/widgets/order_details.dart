@@ -27,7 +27,7 @@ class OrderDetailsScreen extends StatelessWidget {
         title: Text('Detalle de la orden'),
       ),
       body: FutureBuilder<List<OrderModel>>(
-        future: orderController.fetchUserOrders(),
+        future: orderController.fetchUserOrdersForDetails(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const Center(child: Text('Error al intentar obtener las ordenes'));
@@ -112,7 +112,7 @@ class OrderDetailsScreen extends StatelessWidget {
                                   const SizedBox(height: 4),
                                   ProductTitleText(title: item.title, maxLines: 1),
                                   const SizedBox(height: 4),
-                                  ProductTitleText(title: 'Precio: \$${item.price}'),
+                                  ProductTitleText(title: 'Precio: \$${item.price.toStringAsFixed(2)}'),
                                   const SizedBox(height: 4),
                                   ProductTitleText(title: 'Cantidad: ${item.quantity}'),
                                 ],
@@ -142,7 +142,7 @@ class OrderDetailsScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  "Total: \$${order.totalAmount}",
+                  "Total: \$${order.totalAmount.toStringAsFixed(2)}",
                   maxLines: 1,
                   style: const TextStyle(
                     fontSize: 18,

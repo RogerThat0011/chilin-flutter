@@ -35,11 +35,8 @@ class OrderModel {
           : '';
 
   String get orderStatusText =>
-      status == OrderStatus.delivered
-          ? 'Entregado'
-          : status == OrderStatus.shipped
-          ? 'Listo'
-          : 'En Cocina';
+      status == OrderStatus.pending ? 'Pendiente' : status == OrderStatus.finished ? 'Finalizado'
+          : status == OrderStatus.canceled ? 'Cancelado' : 'En Cocina';
 
   Map<String, dynamic> toJson() {
     return {

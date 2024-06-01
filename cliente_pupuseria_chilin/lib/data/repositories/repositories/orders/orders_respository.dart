@@ -30,4 +30,47 @@ class OrderRepository extends GetxController{
       throw 'Ocurrio un error. Por favor intente de nuevo.';
     }
   }
+
+  Future<OrderModel?> getOrder(String userId, String orderId) async {
+    try {
+      final querySnapshot = await _db
+          .collection('Usuarios')
+          .doc(userId)
+          .collection('Ordenes')
+          .where('id', isEqualTo: orderId)
+          .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        final orderData = querySnapshot.docs.first;
+        return OrderModel.fromSnapshot(orderData);
+      } else {
+        return null;
+      }
+    } catch (e) {
+      throw 'Ocurrió un error al obtener la orden: $e';
+    }
+  }
+
+  Future<void> orderToCancel(String userId, String orderId) async {
+    try {
+      final ordersCollection = _db
+          .collection('Usuarios')
+          .doc(userId)
+          .collection('Ordenes');
+
+      final querySnapshot = await ordersCollection
+          .where('id', isEqualTo: orderId)
+          .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        final docId = querySnapshot.docs.first.id;
+        await ordersCollection.doc(docId).update(
+            {'estado': 'OrderStatus.canceled'});
+      } else {
+        throw 'No se encontró la orden con el ID especificado.';
+      }
+    } catch (e) {
+      throw 'Ocurrió un error. Por favor intente de nuevo.';
+    }
+  }
 }
